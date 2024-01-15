@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkApplicationWindow" id="main_window">
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+    <property name="title" translatable="true">Header Bar</property>
+    <property name="titlebar">
+      <object class="AdwHeaderBar">
+        <child type="start">
+          <object class="GtkMenuButton">
+            <property name="label" translatable="true">Open</property>
+            <property name="menu-model">open_menu</property>
+          </object>
+        </child>
+        <child type="start">
+          <object class="GtkButton">
+            <property name="icon-name">tab-new-filled-symbolic</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkMenuButton">
+            <property name="icon-name">open-menu-symbolic</property>
+            <property name="tooltip-text" translatable="true">Main Menu</property>
+            <property name="primary">true</property>
+            <property name="menu-model">window_menu</property>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkButton">
+            <property name="icon-name">loupe-large-symbolic</property>
+          </object>
+        </child>
+      </object>
+    </property>
+    <child>
+      <object class="AdwStatusPage">
+        <property name="title" translatable="true">Header Bar</property>
+        <property name="description" translatable="true">Custom titlebars for windows</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">1</property>
+            <child>
+              <object class="GtkLinkButton">
+                <property name="label" translatable="true">API Reference</property>
+                <property name="uri">https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.4/class.HeaderBar.html</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLinkButton">
+                <property name="label" translatable="true">Human Interface Guidelines</property>
+                <property name="uri">https://developer.gnome.org/hig/patterns/containers/header-bars.html</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <menu id="window_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="true">Keyboard Shortcuts</attribute>
+        <attribute name="action">app.shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="true">About App</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <menu id="open_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="true">Item 1</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="true">Item 2</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="true">Item 3</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
