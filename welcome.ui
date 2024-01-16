@@ -1,195 +1,68 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.10.3 -->
 <interface>
-  <requires lib="gtk" version="4.0"/>
+  <!-- interface-name test.ui -->
+  <requires lib="gtk" version="4.6"/>
   <object class="GtkApplicationWindow" id="main_window">
-    <property name="default-width">800</property>
-    <property name="default-height">600</property>
-    <property name="title" translatable="true">ML4W Welcome</property>
+    <property name="default-height">200</property>
+    <property name="default-width">400</property>
+    <property name="title">ML4W Welcome</property>
+
     <property name="titlebar">
       <object class="AdwHeaderBar">
         <child type="start">
           <object class="GtkMenuButton">
             <property name="label" translatable="true">Open</property>
-            <property name="menu-model">open_menu</property>
+          </object>
+        </child>
+        <child type="start">
+          <object class="GtkButton">
+            <property name="icon-name">tab-new-filled-symbolic</property>
           </object>
         </child>
         <child type="end">
-          <object class="GtkMenuButton">
-            <property name="icon-name">open-menu-symbolic</property>
-            <property name="tooltip-text" translatable="true">Main Menu</property>
-            <property name="primary">true</property>
-            <property name="menu-model">window_menu</property>
+          <object class="GtkButton">
+            <property name="icon-name">loupe-large-symbolic</property>
           </object>
         </child>
       </object>
     </property>
-    <child>
-   <object class="GtkBox" id="welcome">
-    <property name="orientation">1</property>
-    <property name="valign">3</property>
-    <property name="halign">3</property>
-    <child>
-      <object class="GtkImage">
-        <property name="name">logo</property>
-        <property name="icon-name">re.sonny.Workbench</property>
-        <property name="pixel-size">196</property>
-        <property name="margin-bottom">30</property>
-        <style>
-          <class name="icon-dropshadow"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="true">Welcome to Workbench</property>
-        <property name="margin-bottom">30</property>
-        <style>
-          <class name="title-1"/>
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkBox" id="subtitle">
-        <property name="orientation">1</property>
-        <property name="halign">3</property>
-        <property name="margin-bottom">30</property>
-        <child>
-          <object class="GtkLabel">
-            <property name="label">Learn and prototype with
-GNOME technologies</property>
-            <property name="justify">2</property>
-          </object>
-        </child>
-      </object>
-    </child>
+
     <child>
       <object class="GtkBox">
         <property name="orientation">1</property>
-        <property name="homogeneous">true</property>
-        <property name="halign">3</property>
+        
         <child>
-          <object class="GtkBox">
-            <property name="margin-bottom">6</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">update-symbolic</property>
-                <property name="margin-end">12</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">Edit Style or UI to update the Preview</property>
-              </object>
-            </child>
-          </object>
+            <object class="AdwBanner" id="banner">
+                <property name="button-label" translatable="true">How to update</property>
+                <property name="title" translatable="true">An update is available!</property>
+                <property name="revealed">true</property>
+            </object>
         </child>
+
         <child>
           <object class="GtkBox">
-            <property name="margin-bottom">6</property>
+            <property name="margin-bottom">5</property>
+            <property name="margin-end">5</property>
+            <property name="margin-start">5</property>
+            <property name="margin-top">5</property>
+            <property name="orientation">vertical</property>
+            
             <child>
-              <object class="GtkImage">
-                <property name="icon-name">media-playback-start-symbolic</property>
-                <property name="margin-end">12</property>
-                <property name="icon-size">1</property>
+              <object class="GtkButton" id="button1">
+                <property name="halign">start</property>
+                <property name="hexpand">True</property>
+                <property name="label">Test button</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">Hit</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;Control&gt;Return</property>
-                <property name="margin-start">12</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">to format and run Code</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="margin-bottom">6</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">media-floppy-symbolic</property>
-                <property name="margin-end">12</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">Changes are automatically saved and restored</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="margin-bottom">6</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">library-symbolic</property>
-                <property name="margin-end">12</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">Browse the Library for demos and examples</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox">
-            <property name="margin-bottom">6</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">user-bookmarks-symbolic</property>
-                <property name="margin-end">12</property>
-                <property name="icon-size">1</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">Checkout the Bookmarks menu to learn and get help</property>
-              </object>
-            </child>
+
           </object>
         </child>
       </object>
     </child>
-  </object>   </child>
+
   </object>
-  <menu id="window_menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="true">Keyboard Shortcuts</attribute>
-        <attribute name="action">app.shortcuts</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="true">About App</attribute>
-        <attribute name="action">app.about</attribute>
-      </item>
-    </section>
-  </menu>
-  <menu id="open_menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="true">Item 1</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="true">Item 2</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="true">Item 3</attribute>
-      </item>
-    </section>
-  </menu>
+
+
+  
 </interface>

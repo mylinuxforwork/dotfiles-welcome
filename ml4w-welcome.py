@@ -15,8 +15,8 @@ class MyApp(Adw.Application):
         builder.add_from_file("welcome.ui")
 
         # Obtain the button widget and connect it to a function
-        #button = builder.get_object("button1")
-        #button.connect("clicked", self.hello)
+        button = builder.get_object("button1")
+        button.connect("clicked", self.hello)
 
         # Obtain and show the main window
         self.win = builder.get_object("main_window")
