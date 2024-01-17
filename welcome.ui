@@ -1,68 +1,224 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- Created with Cambalache 0.10.3 -->
 <interface>
-  <!-- interface-name test.ui -->
-  <requires lib="gtk" version="4.6"/>
-  <object class="GtkApplicationWindow" id="main_window">
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="Ml4wWelcomeWindow" parent="AdwApplicationWindow">
+
+    <property name="title">ML4W Welcome</property>
     <property name="default-height">200</property>
     <property name="default-width">400</property>
-    <property name="title">ML4W Welcome</property>
+    
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
 
-    <property name="titlebar">
-      <object class="AdwHeaderBar">
-        <child type="start">
-          <object class="GtkMenuButton">
-            <property name="label" translatable="true">Open</property>
-          </object>
-        </child>
-        <child type="start">
-          <object class="GtkButton">
-            <property name="icon-name">tab-new-filled-symbolic</property>
-          </object>
-        </child>
-        <child type="end">
-          <object class="GtkButton">
-            <property name="icon-name">loupe-large-symbolic</property>
-          </object>
-        </child>
-      </object>
-    </property>
+          <!-- Header -->
+          <object class="AdwHeaderBar">
 
-    <child>
-      <object class="GtkBox">
-        <property name="orientation">1</property>
-        
-        <child>
-            <object class="AdwBanner" id="banner">
-                <property name="button-label" translatable="true">How to update</property>
-                <property name="title" translatable="true">An update is available!</property>
-                <property name="revealed">true</property>
-            </object>
-        </child>
+            <child type="start">
+              <object class="GtkMenuButton">
+                <property name="label">Maintenance</property>
+                <property name="menu-model">maintenance_menu</property>
+              </object>
+            </child>
 
-        <child>
-          <object class="GtkBox">
-            <property name="margin-bottom">5</property>
-            <property name="margin-end">5</property>
-            <property name="margin-start">5</property>
-            <property name="margin-top">5</property>
-            <property name="orientation">vertical</property>
-            
-            <child>
-              <object class="GtkButton" id="button1">
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="tooltip-text">Main Menu</property>
+                <property name="primary">true</property>
+                <property name="menu-model">window_menu</property>
+              </object>
+            </child>
+
+            <child type="end">
+              <object class="GtkButton" id="btn_settings">
                 <property name="halign">start</property>
                 <property name="hexpand">True</property>
-                <property name="label">Test button</property>
+                <property name="label">Settings</property>
+                <property name="action-name">app.settings</property>
               </object>
             </child>
 
           </object>
+          <!-- Header -->
         </child>
+
+        <property name="content">
+
+          <object class="GtkBox">
+            <property name="orientation">1</property>
+
+            <!-- Update Banner -->
+            <child>
+                <object class="AdwBanner" id="banner">
+                    <property name="button-label" translatable="true">How to update</property>
+                    <property name="title" translatable="true">An update is available!</property>
+                    <property name="revealed">false</property>
+                </object>
+            </child>
+            <!-- Update Banner -->
+
+            <child>
+              <object class="GtkBox">
+                <property name="margin-bottom">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-start">5</property>
+                <property name="margin-top">5</property>
+                <property name="valign">3</property>
+                <property name="halign">3</property>
+                <property name="orientation">vertical</property>
+
+                <!-- ML4W Logo -->
+                <child>
+                  <object class="GtkImage">
+                    <property name="name">logo</property>
+                    <property name="icon-name">re.sonny.Workbench</property>
+                    <property name="pixel-size">196</property>
+                    <property name="margin-bottom">30</property>
+                    <style>
+                      <class name="icon-dropshadow"/>
+                    </style>
+                  </object>
+                </child>
+                <!-- ML4W Logo -->
+
+                <!-- ML4W Headline -->
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="true">Welcome to ML4W dotfiles</property>
+                    <property name="margin-bottom">30</property>
+                    <style>
+                      <class name="title-1"/>
+                    </style>
+                  </object>
+                </child>
+                <!-- ML4W Headline -->
+
+                <!-- Shortcut Terminal -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;Return</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open the terminal</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>            
+                <!-- Shortcut Terminal -->
+
+                <!-- Shortcut Launcher -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;&lt;Ctrl&gt;Return</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open the application launcher</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>            
+                <!-- Shortcut Launcher -->
+
+                <!-- Shortcut Settings -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;&lt;Ctrl&gt;S</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open Hyprland settings script</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>            
+                <!-- Shortcut Settings -->
+
+                <!-- Shortcut Button -->
+                <child>
+                  <object class="GtkButton">
+                    <property name="margin-top">30</property>
+                    <property name="hexpand">False</property>
+                    <property name="valign">3</property>
+                    <property name="halign">3</property>
+                    <property name="label">All keybindings</property>
+                    <property name="action-name">app.keybindings</property>
+                  </object>
+                </child>
+                <!-- Shortcut Buttons -->
+
+              </object>
+            </child>
+          </object>
+
+        </property>
       </object>
-    </child>
+    </property>
+  </template>
 
-  </object>
+  <!-- Menu Main -->
+  <menu id="window_menu">
 
+    <section>
+      <item>
+        <attribute name="label">ML4W GitLab</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W YouTube Channel</attribute>
+      </item>
+    </section>
 
-  
+    <section>
+      <item>
+        <attribute name="label">About</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+      <item>
+        <attribute name="label">Exit</attribute>
+        <attribute name="action">app.quit</attribute>
+      </item>
+    </section>
+
+  </menu>
+  <!-- Menu Main -->
+
+  <!-- Menu Maintenance -->
+  <menu id="maintenance_menu">
+    <section>
+      <item>
+        <attribute name="label">Update your system</attribute>
+        <attribute name="action">app.update</attribute>
+      </item>
+      <item>
+        <attribute name="label">Cleanup your system</attribute>
+        <attribute name="action">app.cleanup</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label">Reload Waybar</attribute>
+        <attribute name="action">app.waybar_reload</attribute>
+      </item>
+    </section>
+  </menu>
+  <!-- Menu Maintenance -->
+
 </interface>
