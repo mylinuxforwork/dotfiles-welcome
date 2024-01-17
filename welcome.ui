@@ -5,8 +5,8 @@
   <template class="Ml4wWelcomeWindow" parent="AdwApplicationWindow">
 
     <property name="title">ML4W Welcome</property>
-    <property name="default-height">200</property>
-    <property name="default-width">400</property>
+    <property name="default-width">700</property>
+    <property name="default-height">600</property>
     
     <property name="content">
       <object class="AdwToolbarView">
@@ -51,9 +51,9 @@
 
             <!-- Update Banner -->
             <child>
-                <object class="AdwBanner" id="banner">
+                <object class="AdwBanner" id="update_banner">
                     <property name="button-label" translatable="true">How to update</property>
-                    <property name="title" translatable="true">An update is available!</property>
+                    <property name="title">An update is available!</property>
                     <property name="revealed">false</property>
                 </object>
             </child>
@@ -86,11 +86,19 @@
                 <!-- ML4W Headline -->
                 <child>
                   <object class="GtkLabel">
-                    <property name="label" translatable="true">Welcome to ML4W dotfiles</property>
-                    <property name="margin-bottom">30</property>
+                    <property name="label">Welcome to ML4W dotfiles</property>
                     <style>
                       <class name="title-1"/>
                     </style>
+                  </object>
+                </child>
+                <!-- ML4W Headline -->
+
+                <!-- ML4W Headline -->
+                <child>
+                  <object class="GtkLabel" id="ml4w_version">
+                    <property name="label">Version</property>
+                    <property name="margin-bottom">30</property>
                   </object>
                 </child>
                 <!-- ML4W Headline -->

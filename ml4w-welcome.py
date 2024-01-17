@@ -21,6 +21,10 @@ from gi.repository import GObject
 class MainWindow(Adw.ApplicationWindow):
     __gtype_name__ = 'Ml4wWelcomeWindow'
 
+    # Get objects from template
+    ml4w_version = Gtk.Template.Child()
+    update_banner = Gtk.Template.Child()
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -29,10 +33,14 @@ class MainWindow(Adw.ApplicationWindow):
 # -----------------------------------------
 class MyApp(Adw.Application):
 
+    # Path to home folder
+    homeFolder = os.path.expanduser('~')
+    current_version_name = ""
+    current_version_code = ""
+
     def __init__(self, **kwargs):
         super().__init__(application_id='com.ml4w.welcome',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
-        self.homeFolder = os.path.expanduser('~')
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('update', self.on_system_update)
         self.create_action('cleanup', self.on_system_cleanup)
@@ -45,8 +53,27 @@ class MyApp(Adw.Application):
         win = self.props.active_window
         if not win:
             win = MainWindow(application=self)
-        
+
+        # Initialize information on frontend
+        self.readDotfilesVersion()
+        win.ml4w_version.set_text("Version: " + self.current_version_name)
+
+        self.checkForUpdates()
+
+        # Show Application Window
         win.present()
+
+    def checkForUpdates(self):
+        print(":: Check for updates")
+        
+
+    def readDotfilesVersion(self):
+        result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/version.sh"], capture_output=True, text=True)
+        print("::Version " +  result.stdout)
+        version = result.stdout
+        version_arr = version.split(" ")
+        self.current_version_name = version_arr[0]
+        self.current_version_code = version_arr[1]
 
     def on_about(self, widget, _):
         dialog = Adw.AboutWindow(
