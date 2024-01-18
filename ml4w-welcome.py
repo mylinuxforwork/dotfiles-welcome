@@ -96,21 +96,17 @@ class MyApp(Adw.Application):
             print("ERROR: Could not read the file /dotfiles/.version/version.sh")
             win.ml4w_version.set_text("")
 
-
-
     def on_about(self, widget, _):
         dialog = Adw.AboutWindow(
             application_icon="application-x-executable",
-            application_name="Typeset",
-            developer_name="Angela Avery",
-            version="1.2.3",
-            website="https://example.org",
-            issue_url="https://example.org",
-            support_url="https://example.org",
-            copyright="© 2023 Angela Avery",
-            license_type=Gtk.License.GPL_3_0_ONLY,
-            developers=["Angela Avery <angela@example.org>"],
-            artists=["GNOME Design Team"],
+            application_name="ML4W Welcome",
+            developer_name="Stephan Raabe",
+            version="1.0.0",
+            website="https://gitlab.com/stephan-raabe/dotfiles",
+            issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
+            support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
+            copyright="© 2024 Stephan Raabe",
+            license_type=Gtk.License.GPL_3_0_ONLY
         )
         dialog.present()
 
