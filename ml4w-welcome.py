@@ -71,19 +71,26 @@ class MyApp(Adw.Application):
         # Check dotfiles version
         self.readDotfilesVersion(win)
 
+        # Force dark theme
+        self.changeTheme(win)
+
         # Show Application Window
-        print(":: Show Main Window")
         win.present()
 
         # Check for updates
         self.checkForUpdates(win)
 
+    def changeTheme(self,win):
+        app = win.get_application()
+        sm = app.get_style_manager()
+        sm.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
+
     def checkForUpdates(self,win):
-        print(":: Check for updates")
         try:
             result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/update.sh"], capture_output=True, text=True)
             web_version = result.stdout.strip()
-            print("Update " +  web_version)
+            # print("Update " +  web_version)
+
             if (web_version == '0'):
                 print("Show update banner")
                 win.update_banner.set_revealed(True)
@@ -91,10 +98,9 @@ class MyApp(Adw.Application):
             print("ERROR: Could not read the file /dotfiles/.version/update.sh")
 
     def readDotfilesVersion(self,win):
-        print(":: Get dotfiles version")
         try:
             result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/version.sh"], capture_output=True, text=True)
-            print("Version " +  result.stdout)
+            # print("Version " +  result.stdout)
             version = result.stdout
             version_arr = version.split(" ")
             self.current_version_name = version_arr[0]
@@ -119,39 +125,30 @@ class MyApp(Adw.Application):
         dialog.present()
 
     def on_settings(self, widget, _):
-        print(":: In BTN settings handler")
         subprocess.Popen(["alacritty", "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/hypr/start-settings.sh"])
 
     def on_system_update(self, widget, _):
-        print(":: In BTN system_update handler")
         subprocess.Popen(["alacritty","-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
 
     def on_system_cleanup(self, widget, _):
-        print(":: In BTN system_update handler")
         subprocess.Popen(["alacritty","-e", self.homeFolder + "/dotfiles/scripts/cleanup.sh"])
 
     def on_waybar_reload(self, widget, _):
-        print(":: In BTN waybar_reload handler")
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
 
     def on_keybindings(self, widget, _):
-        print(":: In BTN keybindings handler")
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
 
     def on_gitlab(self, widget, _):
-        print(":: In BTN gitlab handler")
         subprocess.run(["xdg-open", "https://gitlab.com/stephan-raabe/dotfiles"])
         
     def on_youtube(self, widget, _):
-        print(":: In BTN youtube handler")
         subprocess.run(["xdg-open", "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
 
     def on_wallpaper(self, widget, _):
-        print(":: In BTN youtube handler")
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/wallpaper.sh","select"])
 
     def on_waybartheme(self, widget, _):
-        print(":: In BTN youtube handler")
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])
 
     # Add Application actions
