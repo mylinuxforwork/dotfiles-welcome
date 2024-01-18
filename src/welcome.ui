@@ -53,8 +53,9 @@
             <child>
                 <object class="AdwBanner" id="update_banner">
                     <property name="button-label" translatable="true">How to update</property>
-                    <property name="title">An update is available!</property>
+                    <property name="title">An update for the dotfiles is available!</property>
                     <property name="revealed">false</property>
+                    <property name="action-name">app.howtoupdate</property>
                 </object>
             </child>
             <!-- Update Banner -->

@@ -1,3 +1,9 @@
+#  __  __ _    _  ___        __     _    _                 _   
+# |  \/  | |  | || \ \      / /    / \  | |__   ___  _   _| |_ 
+# | |\/| | |  | || |\ \ /\ / /    / _ \ | '_ \ / _ \| | | | __|
+# | |  | | |__|__   _\ V  V /    / ___ \| |_) | (_) | |_| | |_ 
+# |_|  |_|_____| |_|  \_/\_/    /_/   \_\_.__/ \___/ \__,_|\__|
+                                                             
 import sys
 import gi
 import subprocess
@@ -13,7 +19,7 @@ from gi.repository import GObject
 # -----------------------------------------
 # Define UI template
 # -----------------------------------------
-@Gtk.Template(filename='welcome.ui')
+@Gtk.Template(filename='src/welcome.ui')
 
 # -----------------------------------------
 # Main Window
@@ -54,26 +60,43 @@ class MyApp(Adw.Application):
         if not win:
             win = MainWindow(application=self)
 
-        # Initialize information on frontend
-        self.readDotfilesVersion()
-        win.ml4w_version.set_text("Version: " + self.current_version_name)
-
-        self.checkForUpdates()
+        # Check dotfiles version
+        self.readDotfilesVersion(win)
 
         # Show Application Window
+        print(":: Show Main Window")
         win.present()
 
-    def checkForUpdates(self):
-        print(":: Check for updates")
-        
+        # Check for updates
+        self.checkForUpdates(win)
 
-    def readDotfilesVersion(self):
-        result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/version.sh"], capture_output=True, text=True)
-        print("::Version " +  result.stdout)
-        version = result.stdout
-        version_arr = version.split(" ")
-        self.current_version_name = version_arr[0]
-        self.current_version_code = version_arr[1]
+    def checkForUpdates(self,win):
+        print(":: Check for updates")
+        try:
+            result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/update.sh"], capture_output=True, text=True)
+            web_version = result.stdout.strip()
+            print("Update " +  web_version)
+            if (web_version == '0'):
+                print("Show update banner")
+                win.update_banner.set_revealed(True)
+        except:
+            print("ERROR: Could not read the file /dotfiles/.version/update.sh")
+
+    def readDotfilesVersion(self,win):
+        print(":: Get dotfiles version")
+        try:
+            result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/version.sh"], capture_output=True, text=True)
+            print("Version " +  result.stdout)
+            version = result.stdout
+            version_arr = version.split(" ")
+            self.current_version_name = version_arr[0]
+            self.current_version_code = version_arr[1]
+            win.ml4w_version.set_text("Version: " + self.current_version_name)
+        except:
+            print("ERROR: Could not read the file /dotfiles/.version/version.sh")
+            win.ml4w_version.set_text("")
+
+
 
     def on_about(self, widget, _):
         dialog = Adw.AboutWindow(
