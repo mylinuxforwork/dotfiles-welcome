@@ -29,6 +29,7 @@ class MainWindow(Adw.ApplicationWindow):
 
     # Get objects from template
     ml4w_version = Gtk.Template.Child()
+    ml4w_logo = Gtk.Template.Child()
     update_banner = Gtk.Template.Child()
 
     def __init__(self, *args, **kwargs):
@@ -54,11 +55,18 @@ class MyApp(Adw.Application):
         self.create_action('settings', self.on_settings)
         self.create_action('waybar_reload', self.on_waybar_reload)
         self.create_action('keybindings', self.on_keybindings)
+        self.create_action('gitlab', self.on_gitlab)
+        self.create_action('youtube', self.on_youtube)
+        self.create_action('wallpaper', self.on_wallpaper)
+        self.create_action('waybartheme', self.on_waybartheme)
 
     def do_activate(self):
         win = self.props.active_window
         if not win:
             win = MainWindow(application=self)
+
+        # Set ML4W logo
+        win.ml4w_logo.set_from_file("src/icon.png")
 
         # Check dotfiles version
         self.readDotfilesVersion(win)
@@ -129,6 +137,22 @@ class MyApp(Adw.Application):
     def on_keybindings(self, widget, _):
         print(":: In BTN keybindings handler")
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
+
+    def on_gitlab(self, widget, _):
+        print(":: In BTN gitlab handler")
+        subprocess.run(["xdg-open", "https://gitlab.com/stephan-raabe/dotfiles"])
+        
+    def on_youtube(self, widget, _):
+        print(":: In BTN youtube handler")
+        subprocess.run(["xdg-open", "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
+
+    def on_wallpaper(self, widget, _):
+        print(":: In BTN youtube handler")
+        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/wallpaper.sh","select"])
+
+    def on_waybartheme(self, widget, _):
+        print(":: In BTN youtube handler")
+        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])
 
     # Add Application actions
     def create_action(self, name, callback, shortcuts=None):

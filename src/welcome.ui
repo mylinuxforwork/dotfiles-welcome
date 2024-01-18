@@ -17,7 +17,7 @@
 
             <child type="start">
               <object class="GtkMenuButton">
-                <property name="label">Maintenance</property>
+                <property name="label">Settings</property>
                 <property name="menu-model">maintenance_menu</property>
               </object>
             </child>
@@ -28,15 +28,6 @@
                 <property name="tooltip-text">Main Menu</property>
                 <property name="primary">true</property>
                 <property name="menu-model">window_menu</property>
-              </object>
-            </child>
-
-            <child type="end">
-              <object class="GtkButton" id="btn_settings">
-                <property name="halign">start</property>
-                <property name="hexpand">True</property>
-                <property name="label">Settings</property>
-                <property name="action-name">app.settings</property>
               </object>
             </child>
 
@@ -72,14 +63,10 @@
 
                 <!-- ML4W Logo -->
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkImage" id="ml4w_logo">
                     <property name="name">logo</property>
-                    <property name="icon-name">re.sonny.Workbench</property>
-                    <property name="pixel-size">196</property>
+                    <property name="pixel-size">150</property>
                     <property name="margin-bottom">30</property>
-                    <style>
-                      <class name="icon-dropshadow"/>
-                    </style>
                   </object>
                 </child>
                 <!-- ML4W Logo -->
@@ -123,13 +110,32 @@
                 </child>            
                 <!-- Shortcut Terminal -->
 
+                <!-- Shortcut Browser -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;B</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open the browser</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>            
+                <!-- Shortcut Browser -->
+
                 <!-- Shortcut Launcher -->
                 <child>
                   <object class="GtkBox">
                     <property name="margin-bottom">6</property>
                     <child>
                       <object class="GtkShortcutsShortcut">
-                        <property name="accelerator">&lt;SUPER&gt;&lt;Ctrl&gt;Return</property>
+                        <property name="accelerator">&lt;Ctrl&gt;&lt;SUPER&gt;Return</property>
                         <property name="margin-start">12</property>
                       </object>
                     </child>
@@ -141,7 +147,7 @@
                   </object>
                 </child>            
                 <!-- Shortcut Launcher -->
-
+                
                 <!-- Shortcut Settings -->
                 <child>
                   <object class="GtkBox">
@@ -189,9 +195,11 @@
     <section>
       <item>
         <attribute name="label">ML4W GitLab</attribute>
+        <attribute name="action">app.gitlab</attribute>
       </item>
       <item>
         <attribute name="label">ML4W YouTube Channel</attribute>
+        <attribute name="action">app.youtube</attribute>
       </item>
     </section>
 
@@ -211,6 +219,22 @@
 
   <!-- Menu Maintenance -->
   <menu id="maintenance_menu">
+    <section>
+      <item>
+        <attribute name="label">Update Wallpaper</attribute>
+        <attribute name="action">app.wallpaper</attribute>
+      </item>
+      <item>
+        <attribute name="label">Change Waybar Theme</attribute>
+        <attribute name="action">app.waybartheme</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label">Hyprland Settings</attribute>
+        <attribute name="action">app.settings</attribute>
+      </item>
+    </section>
     <section>
       <item>
         <attribute name="label">Update your system</attribute>
