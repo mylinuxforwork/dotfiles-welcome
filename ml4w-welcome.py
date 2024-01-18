@@ -8,6 +8,7 @@ import sys
 import gi
 import subprocess
 import os
+import threading
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
@@ -15,6 +16,7 @@ gi.require_version('Adw', '1')
 from gi.repository import Gtk, Adw, Gio
 from gi.repository import GLib
 from gi.repository import GObject
+
 
 # -----------------------------------------
 # Define UI template
@@ -59,6 +61,7 @@ class MyApp(Adw.Application):
         self.create_action('youtube', self.on_youtube)
         self.create_action('wallpaper', self.on_wallpaper)
         self.create_action('waybartheme', self.on_waybartheme)
+        self.create_action('howtoupdate', self.on_howtoupdate)
 
     def do_activate(self):
         win = self.props.active_window
@@ -74,11 +77,11 @@ class MyApp(Adw.Application):
         # Force dark theme
         self.changeTheme(win)
 
-        # Show Application Window
-        win.present()
-
         # Check for updates
         self.checkForUpdates(win)
+        
+        # Show Application Window
+        win.present()
 
     def changeTheme(self,win):
         app = win.get_application()
@@ -92,7 +95,7 @@ class MyApp(Adw.Application):
             # print("Update " +  web_version)
 
             if (web_version == '0'):
-                print("Show update banner")
+                # print("Show update banner")
                 win.update_banner.set_revealed(True)
         except:
             print("ERROR: Could not read the file /dotfiles/.version/update.sh")
@@ -141,6 +144,9 @@ class MyApp(Adw.Application):
 
     def on_gitlab(self, widget, _):
         subprocess.run(["xdg-open", "https://gitlab.com/stephan-raabe/dotfiles"])
+
+    def on_howtoupdate(self, widget, _):
+        subprocess.run(["xdg-open", "https://gitlab.com/stephan-raabe/dotfiles#update-with-git"])
         
     def on_youtube(self, widget, _):
         subprocess.run(["xdg-open", "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
