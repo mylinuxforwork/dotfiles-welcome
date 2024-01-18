@@ -166,4 +166,6 @@ class MyApp(Adw.Application):
 # Application Start
 # -----------------------------------------
 app = MyApp()
+sm = app.get_style_manager()
+sm.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
 app.run(sys.argv)
