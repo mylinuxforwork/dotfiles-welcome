@@ -17,11 +17,13 @@ from gi.repository import Gtk, Adw, Gio
 from gi.repository import GLib
 from gi.repository import GObject
 
+# Get script path
+pathname = os.path.dirname(sys.argv[0])    
 
 # -----------------------------------------
 # Define UI template
 # -----------------------------------------
-@Gtk.Template(filename='src/welcome.ui')
+@Gtk.Template(filename = pathname + '/src/welcome.ui')
 
 # -----------------------------------------
 # Main Window
@@ -33,6 +35,7 @@ class MainWindow(Adw.ApplicationWindow):
     ml4w_version = Gtk.Template.Child()
     ml4w_logo = Gtk.Template.Child()
     update_banner = Gtk.Template.Child()
+    btn_toggle = Gtk.Template.Child()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -44,8 +47,10 @@ class MyApp(Adw.Application):
 
     # Path to home folder
     homeFolder = os.path.expanduser('~')
+    pathname = os.path.dirname(sys.argv[0]) 
     current_version_name = ""
     current_version_code = ""
+    tiling = False
 
     def __init__(self, **kwargs):
         super().__init__(application_id='com.ml4w.welcome',
@@ -61,15 +66,19 @@ class MyApp(Adw.Application):
         self.create_action('youtube', self.on_youtube)
         self.create_action('wallpaper', self.on_wallpaper)
         self.create_action('waybartheme', self.on_waybartheme)
+        self.create_action('gtktheme', self.on_gtktheme)
         self.create_action('howtoupdate', self.on_howtoupdate)
+        self.create_action('toggle', self.on_toggle)
 
     def do_activate(self):
         win = self.props.active_window
         if not win:
             win = MainWindow(application=self)
 
+        self.btn_toggle = win.btn_toggle
+
         # Set ML4W logo
-        win.ml4w_logo.set_from_file("src/icon.png")
+        win.ml4w_logo.set_from_file(pathname + "/src/icon.png")
 
         # Check dotfiles version
         self.readDotfilesVersion(win)
@@ -127,6 +136,22 @@ class MyApp(Adw.Application):
         )
         dialog.present()
 
+    # Toggle floating of welcome app
+    # hyprctl dispatch togglefloating com.ml4w.welcome
+
+    def on_toggle(self, widget, win):
+        # Change Label
+        if (self.tiling):
+            self.btn_toggle.set_icon_name("window-minimize-symbolic")
+            self.btn_toggle.set_tooltip_text("Set to tiling")
+            self.tiling = False
+        else:
+            self.btn_toggle.set_icon_name("window-maximize-symbolic")
+            self.btn_toggle.set_tooltip_text("Set to floating")
+            self.tiling = True
+
+        subprocess.Popen(["hyprctl", "dispatch", "togglefloating", "com.ml4w.welcome"])
+
     def on_settings(self, widget, _):
         subprocess.Popen(["alacritty", "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/hypr/start-settings.sh"])
 
@@ -156,6 +181,9 @@ class MyApp(Adw.Application):
 
     def on_waybartheme(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])
+
+    def on_gtktheme(self, widget, _):
+        subprocess.Popen(["nwg-look"])
 
     # Add Application actions
     def create_action(self, name, callback, shortcuts=None):

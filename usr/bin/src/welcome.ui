@@ -31,6 +31,15 @@
               </object>
             </child>
 
+            <child type="end">
+              <object class="GtkButton" id="btn_toggle">
+                <property name="icon-name">window-minimize-symbolic</property>
+                <property name="name">flat</property>
+                <property name="action-name">app.toggle</property>
+                <property name="tooltip-text">Set to tiling</property>
+              </object>
+            </child>
+
           </object>
           <!-- Header -->
         </child>
@@ -227,6 +236,10 @@
       <item>
         <attribute name="label">Change Waybar Theme</attribute>
         <attribute name="action">app.waybartheme</attribute>
+      </item>
+      <item>
+        <attribute name="label">Change GTK Theme</attribute>
+        <attribute name="action">app.gtktheme</attribute>
       </item>
     </section>
     <section>

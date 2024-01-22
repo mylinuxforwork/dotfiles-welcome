@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ML4W Welcome
+Exec=AppRun.sh
+Icon=icon
+Type=Application
+Categories=Utility
