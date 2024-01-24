@@ -36,6 +36,7 @@ class MainWindow(Adw.ApplicationWindow):
     ml4w_logo = Gtk.Template.Child()
     update_banner = Gtk.Template.Child()
     btn_toggle = Gtk.Template.Child()
+    switch_autostart = Gtk.Template.Child()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -65,16 +66,26 @@ class MyApp(Adw.Application):
         self.create_action('gitlab', self.on_gitlab)
         self.create_action('youtube', self.on_youtube)
         self.create_action('wallpaper', self.on_wallpaper)
+        self.create_action('network', self.on_network)
         self.create_action('waybartheme', self.on_waybartheme)
         self.create_action('gtktheme', self.on_gtktheme)
         self.create_action('howtoupdate', self.on_howtoupdate)
         self.create_action('toggle', self.on_toggle)
+        self.create_action('autostart', self.on_autostart)
 
     def do_activate(self):
         win = self.props.active_window
         if not win:
             win = MainWindow(application=self)
 
+        # Get Autostart Button
+        self.switch_autostart = win.switch_autostart
+        if (os.path.exists(self.homeFolder + "/.cache/ml4w-welcome-autostart")):
+            self.switch_autostart.set_active(False)
+        else:
+            self.switch_autostart.set_active(True)
+
+        # Get Window Toggle Button
         self.btn_toggle = win.btn_toggle
 
         # Set ML4W logo
@@ -182,8 +193,18 @@ class MyApp(Adw.Application):
     def on_waybartheme(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])
 
+    def on_network(self, widget, _):
+        subprocess.Popen(["nm-connection-editor"])
+
     def on_gtktheme(self, widget, _):
         subprocess.Popen(["nwg-look"])
+
+    def on_autostart(self, widget, _):
+        if(self.switch_autostart.get_active()):
+            if (os.path.exists(self.homeFolder + "/.cache/ml4w-welcome-autostart")):
+                os.remove(self.homeFolder + "/.cache/ml4w-welcome-autostart")
+        else:
+            file = open(self.homeFolder + "/.cache/ml4w-welcome-autostart", "w+")
 
     # Add Application actions
     def create_action(self, name, callback, shortcuts=None):

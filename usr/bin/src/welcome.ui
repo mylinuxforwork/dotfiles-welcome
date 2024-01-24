@@ -40,6 +40,13 @@
               </object>
             </child>
 
+            <child type="end">
+              <object class="GtkSwitch" id="switch_autostart">
+                <property name="tooltip-text">Toggle Autostart</property>
+                <property name="action-name">app.autostart</property>
+              </object>
+            </child>         
+
           </object>
           <!-- Header -->
         </child>
@@ -246,6 +253,10 @@
       <item>
         <attribute name="label">Hyprland Settings</attribute>
         <attribute name="action">app.settings</attribute>
+      </item>
+      <item>
+        <attribute name="label">Network Settings</attribute>
+        <attribute name="action">app.network</attribute>
       </item>
     </section>
     <section>
