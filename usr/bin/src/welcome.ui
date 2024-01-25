@@ -248,6 +248,10 @@
         <attribute name="label">Change GTK Theme</attribute>
         <attribute name="action">app.gtktheme</attribute>
       </item>
+      <item>
+        <attribute name="label">Refresh GTK Settings</attribute>
+        <attribute name="action">app.gtkrefresh</attribute>
+      </item>
     </section>
     <section>
       <item>
@@ -273,6 +277,10 @@
       <item>
         <attribute name="label">Reload Waybar</attribute>
         <attribute name="action">app.waybar_reload</attribute>
+      </item>
+      <item>
+        <attribute name="label">Toggle Waybar</attribute>
+        <attribute name="action">app.waybar_toggle</attribute>
       </item>
     </section>
   </menu>
