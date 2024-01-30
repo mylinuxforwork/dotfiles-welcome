@@ -54,6 +54,7 @@ class MyApp(Adw.Application):
     tiling = False
     browser = "chromium"
     terminal = "alacritty"
+    win = Adw.ApplicationWindow()
 
     def __init__(self, **kwargs):
         super().__init__(application_id='com.ml4w.welcome',
@@ -76,6 +77,7 @@ class MyApp(Adw.Application):
         self.create_action('howtoupdate', self.on_howtoupdate)
         self.create_action('toggle', self.on_toggle)
         self.create_action('autostart', self.on_autostart)
+        self.create_action('monitor', self.on_monitor_dialog)
 
     def do_activate(self):
         win = self.props.active_window
@@ -105,10 +107,10 @@ class MyApp(Adw.Application):
         self.checkForUpdates(win)
 
         # get Browser
-        self.getBrowser(win)
+        self.getBrowser()
 
         # get Terminal
-        self.getTerminal(win)
+        self.getTerminal()
 
         # Show Application Window
         win.present()
@@ -120,7 +122,7 @@ class MyApp(Adw.Application):
         sm = app.get_style_manager()
         sm.set_color_scheme(Adw.ColorScheme.PREFER_DARK)
 
-    def getTerminal(self,win):
+    def getTerminal(self):
         try:
             result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/terminal.sh"], capture_output=True, text=True)
             self.terminal = result.stdout.strip()
@@ -128,7 +130,7 @@ class MyApp(Adw.Application):
         except:
             print("ERROR: Could not read the file /dotfiles/.settings/terminal.sh")
 
-    def getBrowser(self,win):
+    def getBrowser(self):
         try:
             result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/browser.sh"], capture_output=True, text=True)
             self.browser = result.stdout.strip()
@@ -162,6 +164,7 @@ class MyApp(Adw.Application):
             win.ml4w_version.set_text("")
 
     def on_about(self, widget, _):
+        
         dialog = Adw.AboutWindow(
             application_icon="application-x-executable",
             application_name="ML4W Welcome",
@@ -244,6 +247,17 @@ class MyApp(Adw.Application):
             file = open(self.homeFolder + "/.cache/waybar-disabled", "w+")
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
 
+    def on_monitor_dialog(self, widget, win):
+        dialog = Adw.MessageDialog(
+            heading = "Monitor Settings",
+            body = "Open Hyprland Settings to change the screen resolution (System/Monitor). If your monitor resolution is not listed, you can create a custom monitor variation.",
+            close_response = "cancel"
+        )
+        dialog.set_transient_for(self.win)
+        dialog.set_destroy_with_parent(True)
+        dialog.set_modal(True)
+        dialog.add_response("ok", "OK")
+        dialog.choose(None)
 
     # Add Application actions
     def create_action(self, name, callback, shortcuts=None):

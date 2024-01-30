@@ -176,7 +176,7 @@
                     </child>
                     <child>
                       <object class="GtkLabel">
-                        <property name="label" translatable="true">to open Hyprland settings script</property>
+                        <property name="label">to open Hyprland settings script</property>
                       </object>
                     </child>
                   </object>
@@ -186,7 +186,7 @@
                 <!-- Shortcut Button -->
                 <child>
                   <object class="GtkButton">
-                    <property name="margin-top">30</property>
+                    <property name="margin-top">20</property>
                     <property name="hexpand">False</property>
                     <property name="valign">3</property>
                     <property name="halign">3</property>
@@ -257,6 +257,10 @@
       <item>
         <attribute name="label">Hyprland Settings</attribute>
         <attribute name="action">app.settings</attribute>
+      </item>
+      <item>
+        <attribute name="label">Monitor Settings</attribute>
+        <attribute name="action">app.monitor</attribute>
       </item>
       <item>
         <attribute name="label">Network Settings</attribute>
