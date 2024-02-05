@@ -221,6 +221,17 @@
 
     <section>
       <item>
+        <attribute name="label">Hyprland Homepage</attribute>
+        <attribute name="action">app.hyprlandhomepage</attribute>
+      </item>
+      <item>
+        <attribute name="label">Hyprland Wiki</attribute>
+        <attribute name="action">app.hyprlandwiki</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
         <attribute name="label">About</attribute>
         <attribute name="action">app.about</attribute>
       </item>

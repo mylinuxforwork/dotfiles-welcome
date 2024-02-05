@@ -78,6 +78,8 @@ class MyApp(Adw.Application):
         self.create_action('toggle', self.on_toggle)
         self.create_action('autostart', self.on_autostart)
         self.create_action('monitor', self.on_monitor_dialog)
+        self.create_action('hyprlandhomepage', self.on_hyprlandhomepage)
+        self.create_action('hyprlandwiki', self.on_hyprlandwiki)
 
     def do_activate(self):
         win = self.props.active_window
@@ -208,6 +210,12 @@ class MyApp(Adw.Application):
 
     def on_keybindings(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
+
+    def on_hyprlandhomepage(self, widget, _):
+        subprocess.Popen([self.browser, "https://hyprland.org/"])
+
+    def on_hyprlandwiki(self, widget, _):
+        subprocess.Popen([self.browser, "https://wiki.hyprland.org/"])
 
     def on_gitlab(self, widget, _):
         subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles"])
