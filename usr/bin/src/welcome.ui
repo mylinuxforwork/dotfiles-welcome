@@ -232,6 +232,13 @@
 
     <section>
       <item>
+        <attribute name="label">System Info</attribute>
+        <attribute name="action">app.systeminfo</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
         <attribute name="label">About</attribute>
         <attribute name="action">app.about</attribute>
       </item>
@@ -266,7 +273,7 @@
     </section>
     <section>
       <item>
-        <attribute name="label">Hyprland Settings</attribute>
+        <attribute name="label">Hyprland Settings Script</attribute>
         <attribute name="action">app.settings</attribute>
       </item>
       <item>
@@ -277,6 +284,10 @@
         <attribute name="label">Network Settings</attribute>
         <attribute name="action">app.network</attribute>
       </item>
+      <item>
+        <attribute name="label">Set Thunar Terminal</attribute>
+        <attribute name="action">app.thunarterminal</attribute>
+      </item>
     </section>
     <section>
       <item>
@@ -286,6 +297,10 @@
       <item>
         <attribute name="label">Cleanup your system</attribute>
         <attribute name="action">app.cleanup</attribute>
+      </item>
+      <item>
+        <attribute name="label">Unlock pacman database</attribute>
+        <attribute name="action">app.unlock</attribute>
       </item>
     </section>
     <section>
