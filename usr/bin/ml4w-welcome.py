@@ -70,6 +70,7 @@ class MyApp(Adw.Application):
         self.create_action('gitlab', self.on_gitlab)
         self.create_action('youtube', self.on_youtube)
         self.create_action('wallpaper', self.on_wallpaper)
+        self.create_action('wallpaper_folder', self.on_wallpaper_folder)
         self.create_action('network', self.on_network)
         self.create_action('waybartheme', self.on_waybartheme)
         self.create_action('gtktheme', self.on_gtktheme)
@@ -82,7 +83,11 @@ class MyApp(Adw.Application):
         self.create_action('hyprlandwiki', self.on_hyprlandwiki)
         self.create_action('systeminfo', self.on_system_info)
         self.create_action('unlock', self.on_system_unlock)
-        self.create_action('thunarterminal', self.on_thunar_terminal)
+        self.create_action('timeshift', self.on_system_timeshift)
+        self.create_action('thunarterminal', self.on_system_thunarterminal)
+        self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
+        self.create_action('sddm_enable', self.on_sddm_enable)
+        self.create_action('sddm_disable', self.on_sddm_disable)
 
     def do_activate(self):
         win = self.props.active_window
@@ -208,17 +213,29 @@ class MyApp(Adw.Application):
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
 
+    def on_system_timeshift(self, widget, _):
+        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/installtimeshift.sh"])
+
+    def on_system_thunarterminal(self, widget, _):
+        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/thunarterminal.sh"])
+
     def on_system_unlock(self, widget, _):
         subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/unlock-pacman.sh"])
 
     def on_system_cleanup(self, widget, _):
         subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/cleanup.sh"])
 
+    def on_sddm_wallpaper(self, widget, _):
+        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/sddm/scripts/wallpaper.sh"])
+
+    def on_sddm_disable(self, widget, _):
+        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/sddm/scripts/disable.sh"])
+
+    def on_sddm_enable(self, widget, _):
+        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/sddm/scripts/enable.sh"])
+
     def on_waybar_reload(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
-
-    def on_thunar_terminal(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/setthunarterminal.sh"])
 
     def on_keybindings(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
@@ -240,6 +257,9 @@ class MyApp(Adw.Application):
 
     def on_wallpaper(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/wallpaper.sh","select"])
+
+    def on_wallpaper_folder(self, widget, _):
+        subprocess.Popen(["xdg-open", self.homeFolder + "/wallpaper/"])
 
     def on_waybartheme(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])

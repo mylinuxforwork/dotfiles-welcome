@@ -255,24 +255,6 @@
   <menu id="maintenance_menu">
     <section>
       <item>
-        <attribute name="label">Update Wallpaper</attribute>
-        <attribute name="action">app.wallpaper</attribute>
-      </item>
-      <item>
-        <attribute name="label">Change Waybar Theme</attribute>
-        <attribute name="action">app.waybartheme</attribute>
-      </item>
-      <item>
-        <attribute name="label">Change GTK Theme</attribute>
-        <attribute name="action">app.gtktheme</attribute>
-      </item>
-      <item>
-        <attribute name="label">Refresh GTK Settings</attribute>
-        <attribute name="action">app.gtkrefresh</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
         <attribute name="label">Hyprland Settings Script</attribute>
         <attribute name="action">app.settings</attribute>
       </item>
@@ -280,38 +262,84 @@
         <attribute name="label">Monitor Settings</attribute>
         <attribute name="action">app.monitor</attribute>
       </item>
-      <item>
-        <attribute name="label">Network Settings</attribute>
-        <attribute name="action">app.network</attribute>
-      </item>
-      <item>
-        <attribute name="label">Set Thunar Terminal</attribute>
-        <attribute name="action">app.thunarterminal</attribute>
-      </item>
     </section>
     <section>
-      <item>
-        <attribute name="label">Update your system</attribute>
-        <attribute name="action">app.update</attribute>
-      </item>
-      <item>
-        <attribute name="label">Cleanup your system</attribute>
-        <attribute name="action">app.cleanup</attribute>
-      </item>
-      <item>
-        <attribute name="label">Unlock pacman database</attribute>
-        <attribute name="action">app.unlock</attribute>
-      </item>
-    </section>
-    <section>
-      <item>
-        <attribute name="label">Reload Waybar</attribute>
-        <attribute name="action">app.waybar_reload</attribute>
-      </item>
-      <item>
-        <attribute name="label">Toggle Waybar</attribute>
-        <attribute name="action">app.waybar_toggle</attribute>
-      </item>
+      <submenu>
+        <attribute name="label" translatable="true">Appearance</attribute>
+        <item>
+          <attribute name="label">Update Wallpaper</attribute>
+          <attribute name="action">app.wallpaper</attribute>
+        </item>
+        <item>
+          <attribute name="label">Open Wallpaper Folder</attribute>
+          <attribute name="action">app.wallpaper_folder</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change Waybar Theme</attribute>
+          <attribute name="action">app.waybartheme</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change GTK Theme</attribute>
+          <attribute name="action">app.gtktheme</attribute>
+        </item>
+        <item>
+          <attribute name="label">Refresh GTK Settings</attribute>
+          <attribute name="action">app.gtkrefresh</attribute>
+        </item>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="true">Waybar</attribute>
+        <item>
+          <attribute name="label">Reload Waybar</attribute>
+          <attribute name="action">app.waybar_reload</attribute>
+        </item>
+        <item>
+          <attribute name="label">Toggle Waybar</attribute>
+          <attribute name="action">app.waybar_toggle</attribute>
+        </item>
+      </submenu>      
+      <submenu>
+        <attribute name="label" translatable="true">SDDM</attribute>
+        <item>
+          <attribute name="label" translatable="true">Set Wallpaper</attribute>
+          <attribute name="action">app.sddm_wallpaper</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="true">Disable SDDM</attribute>
+          <attribute name="action">app.sddm_disable</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="true">Enable SDDM</attribute>
+          <attribute name="action">app.sddm_enable</attribute>
+        </item>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="true">System</attribute>
+        <item>
+          <attribute name="label">Update your system</attribute>
+          <attribute name="action">app.update</attribute>
+        </item>
+        <item>
+          <attribute name="label">Cleanup your system</attribute>
+          <attribute name="action">app.cleanup</attribute>
+        </item>
+        <item>
+          <attribute name="label">Unlock pacman database</attribute>
+          <attribute name="action">app.unlock</attribute>
+        </item>
+        <item>
+          <attribute name="label">Install Timeshift</attribute>
+          <attribute name="action">app.timeshift</attribute>
+        </item>
+        <item>
+          <attribute name="label">Network Settings</attribute>
+          <attribute name="action">app.network</attribute>
+        </item>
+        <item>
+          <attribute name="label">Set Thunar Terminal</attribute>
+          <attribute name="action">app.thunarterminal</attribute>
+        </item>
+      </submenu>
     </section>
   </menu>
   <!-- Menu Maintenance -->
