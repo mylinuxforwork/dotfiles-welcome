@@ -341,6 +341,12 @@
         </item>
       </submenu>
     </section>
+    <section>
+      <item>
+        <attribute name="label">Exit Hyprland</attribute>
+        <attribute name="action">app.exit_hyprland</attribute>
+      </item>
+    </section>
   </menu>
   <!-- Menu Maintenance -->
 

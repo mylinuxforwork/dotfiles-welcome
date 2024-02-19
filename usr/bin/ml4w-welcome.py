@@ -88,6 +88,7 @@ class MyApp(Adw.Application):
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('sddm_enable', self.on_sddm_enable)
         self.create_action('sddm_disable', self.on_sddm_disable)
+        self.create_action('exit_hyprland', self.on_exit_hyprland)
 
     def do_activate(self):
         win = self.props.active_window
@@ -272,6 +273,9 @@ class MyApp(Adw.Application):
 
     def on_gtkrefresh(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/gtk.sh"])
+
+    def on_exit_hyprland(self, widget, _):
+        subprocess.Popen(["hyprctl", "dispatch", "exit"])
 
     def on_autostart(self, widget, _):
         if(self.switch_autostart.get_active()):
