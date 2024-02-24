@@ -275,7 +275,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/gtk.sh"])
 
     def on_exit_hyprland(self, widget, _):
-        subprocess.Popen(["hyprctl", "dispatch", "exit"])
+        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/exit.sh"])
 
     def on_autostart(self, widget, _):
         if(self.switch_autostart.get_active()):
