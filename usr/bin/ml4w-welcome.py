@@ -178,9 +178,9 @@ class MyApp(Adw.Application):
         
         dialog = Adw.AboutWindow(
             application_icon="application-x-executable",
-            application_name="ML4W Welcome",
+            application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.0.1",
+            version="1.1",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -212,28 +212,28 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
 
     def on_system_update(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
 
     def on_system_timeshift(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/installtimeshift.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installtimeshift.sh"])
 
     def on_system_thunarterminal(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/thunarterminal.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/thunarterminal.sh"])
 
     def on_system_unlock(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/unlock-pacman.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/unlock-pacman.sh"])
 
     def on_system_cleanup(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/scripts/cleanup.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/cleanup.sh"])
 
     def on_sddm_wallpaper(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/sddm/scripts/wallpaper.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/wallpaper.sh"])
 
     def on_sddm_disable(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/sddm/scripts/disable.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/disable.sh"])
 
     def on_sddm_enable(self, widget, _):
-        subprocess.Popen([self.terminal, "-e", self.homeFolder + "/dotfiles/sddm/scripts/enable.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/enable.sh"])
 
     def on_waybar_reload(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
