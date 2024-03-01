@@ -59,10 +59,10 @@
             <!-- Update Banner -->
             <child>
                 <object class="AdwBanner" id="update_banner">
-                    <property name="button-label" translatable="true">How to update</property>
+                    <property name="button-label" translatable="true">Update now</property>
                     <property name="title">An update for the dotfiles is available!</property>
                     <property name="revealed">false</property>
-                    <property name="action-name">app.howtoupdate</property>
+                    <property name="action-name">app.update_dotfiles</property>
                 </object>
             </child>
             <!-- Update Banner -->
@@ -210,7 +210,7 @@
 
     <section>
       <item>
-        <attribute name="label">ML4W GitLab</attribute>
+        <attribute name="label">ML4W dotfiles GitLab</attribute>
         <attribute name="action">app.gitlab</attribute>
       </item>
       <item>
@@ -234,6 +234,10 @@
       <item>
         <attribute name="label">System Info</attribute>
         <attribute name="action">app.systeminfo</attribute>
+      </item>
+      <item>
+        <attribute name="label">Update Dotfiles</attribute>
+        <attribute name="action">app.update_dotfiles</attribute>
       </item>
     </section>
 

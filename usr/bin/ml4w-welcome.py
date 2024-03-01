@@ -89,6 +89,7 @@ class MyApp(Adw.Application):
         self.create_action('sddm_enable', self.on_sddm_enable)
         self.create_action('sddm_disable', self.on_sddm_disable)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
+        self.create_action('update_dotfiles', self.on_update_dotfiles)
 
     def do_activate(self):
         win = self.props.active_window
@@ -148,6 +149,9 @@ class MyApp(Adw.Application):
             print (":: Using Browser " + self.browser)
         except:
             print("ERROR: Could not read the file /dotfiles/.settings/browser.sh")
+
+    def on_update_dotfiles(self, widget, _):
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/update.sh"])
 
     def checkForUpdates(self,win):
         try:
