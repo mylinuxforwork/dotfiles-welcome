@@ -266,6 +266,29 @@
         <attribute name="label">Monitor Settings</attribute>
         <attribute name="action">app.monitor</attribute>
       </item>
+      <submenu>
+        <attribute name="label">Hypridle</attribute>
+        <item>
+          <attribute name="label">No dpms/suspend</attribute>
+          <attribute name="action">app.hypridle_nosuspend</attribute>
+        </item>
+        <item>
+          <attribute name="label">dpms and suspend</attribute>
+          <attribute name="action">app.hypridle_dpmssuspend</attribute>
+        </item>
+        <item>
+          <attribute name="label">systemctl/no dpwms (for Laptops)</attribute>
+          <attribute name="action">app.hypridle_systemctl</attribute>
+        </item>
+        <item>
+          <attribute name="label">dpms/no suspend (for Desktop PCs)</attribute>
+          <attribute name="action">app.hypridle_dpms</attribute>
+        </item>
+        <item>
+          <attribute name="label">disabled (no hyprlock)</attribute>
+          <attribute name="action">app.hypridle_disabled</attribute>
+        </item>
+      </submenu>
     </section>
     <section>
       <submenu>

@@ -9,6 +9,7 @@ import gi
 import subprocess
 import os
 import threading
+import shutil
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
@@ -90,6 +91,11 @@ class MyApp(Adw.Application):
         self.create_action('sddm_disable', self.on_sddm_disable)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
+        self.create_action('hypridle_systemctl', self.on_hypridle_systemctl)
+        self.create_action('hypridle_dpms', self.on_hypridle_dpms)
+        self.create_action('hypridle_nosuspend', self.on_hypridle_nosuspend)
+        self.create_action('hypridle_dpmssuspend', self.on_hypridle_dpmssuspend)
+        self.create_action('hypridle_disabled', self.on_hypridle_disabled)
 
     def do_activate(self):
         win = self.props.active_window
@@ -208,6 +214,71 @@ class MyApp(Adw.Application):
             self.tiling = True
 
         subprocess.Popen(["hyprctl", "dispatch", "togglefloating", "com.ml4w.welcome"])
+
+    def on_hypridle_disabled(self, widget, _):
+        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_disabled.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
+        dialog = Adw.MessageDialog(
+            heading = "Hypridle Settings",
+            body = "Hypridle disabled. Hyprlock and suspend will not start. Please logout and login again.",
+            close_response = "cancel"
+        )
+        dialog.set_transient_for(self.win)
+        dialog.set_destroy_with_parent(True)
+        dialog.set_modal(True)
+        dialog.add_response("ok", "OK")
+        dialog.choose(None)
+
+    def on_hypridle_nosuspend(self, widget, _):
+        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_nosuspend.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
+        dialog = Adw.MessageDialog(
+            heading = "Hypridle Settings",
+            body = "Hypridle suspend disabled. Please logout and login again.",
+            close_response = "cancel"
+        )
+        dialog.set_transient_for(self.win)
+        dialog.set_destroy_with_parent(True)
+        dialog.set_modal(True)
+        dialog.add_response("ok", "OK")
+        dialog.choose(None)
+
+    def on_hypridle_dpmssuspend(self, widget, _):
+        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_dpmssuspend.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
+        dialog = Adw.MessageDialog(
+            heading = "Hypridle Settings",
+            body = "Hypridle dpms and suspend enabled. Please logout and login again.",
+            close_response = "cancel"
+        )
+        dialog.set_transient_for(self.win)
+        dialog.set_destroy_with_parent(True)
+        dialog.set_modal(True)
+        dialog.add_response("ok", "OK")
+        dialog.choose(None)
+
+    def on_hypridle_dpms(self, widget, _):
+        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_dpms.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
+        dialog = Adw.MessageDialog(
+            heading = "Hypridle Settings",
+            body = "Hypridle suspend set to dpms (for Desktop PCs). Please logout and login again.",
+            close_response = "cancel"
+        )
+        dialog.set_transient_for(self.win)
+        dialog.set_destroy_with_parent(True)
+        dialog.set_modal(True)
+        dialog.add_response("ok", "OK")
+        dialog.choose(None)
+
+    def on_hypridle_systemctl(self, widget, _):
+        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_systemctl.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
+        dialog = Adw.MessageDialog(
+            heading = "Hypridle Settings",
+            body = "Hypridle suspend set to systemctl (for Laptops). Please logout and login again.",
+            close_response = "cancel"
+        )
+        dialog.set_transient_for(self.win)
+        dialog.set_destroy_with_parent(True)
+        dialog.set_modal(True)
+        dialog.add_response("ok", "OK")
+        dialog.choose(None)
 
     def on_settings(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/hypr/start-settings.sh"])

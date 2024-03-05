@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=ML4W Welcome App
+Name=ML4W Welcome
 Exec=AppRun
 Icon=ml4w-icon
 Terminal=false
