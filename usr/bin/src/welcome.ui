@@ -259,7 +259,7 @@
   <menu id="maintenance_menu">
     <section>
       <item>
-        <attribute name="label">Hyprland Settings Script</attribute>
+        <attribute name="label">Ml4W Dotfiles Settings</attribute>
         <attribute name="action">app.settings</attribute>
       </item>
       <item>

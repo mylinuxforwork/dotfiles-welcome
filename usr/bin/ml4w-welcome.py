@@ -190,7 +190,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.1",
+            version="1.2",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -281,7 +281,7 @@ class MyApp(Adw.Application):
         dialog.choose(None)
 
     def on_settings(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/hypr/start-settings.sh"])
+        subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])
 
     def on_system_info(self, widget, _):
         subprocess.Popen([self.terminal, "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
@@ -369,7 +369,7 @@ class MyApp(Adw.Application):
     def on_monitor_dialog(self, widget, win):
         dialog = Adw.MessageDialog(
             heading = "Monitor Settings",
-            body = "Open Hyprland Settings to change the screen resolution (System/Monitor). If your monitor resolution is not listed, you can create a custom monitor variation.",
+            body = "Open ML4W Dotfiles Settings to change the screen resolution (Monitor Variations). If your monitor resolution is not listed, you can create a custom monitor variation.",
             close_response = "cancel"
         )
         dialog.set_transient_for(self.win)
