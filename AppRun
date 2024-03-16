@@ -1,4 +1,9 @@
 #!/bin/sh
-HERE="$(dirname "$(readlink -f "${0}")")"
-EXEC="${HERE}/usr/bin/ml4w-welcome.py"
-python ${EXEC}
+p=$(ps -ef | grep ml4w-welcome)
+if [[ $p = *'ml4w-welcome.py'* ]]; then
+    exit
+else
+    HERE="$(dirname "$(readlink -f "${0}")")"
+    EXEC="${HERE}/usr/bin/ml4w-welcome.py"
+    python ${EXEC}
+fi

@@ -66,7 +66,6 @@ class MyApp(Adw.Application):
         self.create_action('about', self.on_about)
         self.create_action('settings', self.on_settings)
         self.create_action('waybar_reload', self.on_waybar_reload)
-        self.create_action('waybar_toggle', self.on_waybar_toggle)
         self.create_action('keybindings', self.on_keybindings)
         self.create_action('gitlab', self.on_gitlab)
         self.create_action('youtube', self.on_youtube)
@@ -79,7 +78,6 @@ class MyApp(Adw.Application):
         self.create_action('howtoupdate', self.on_howtoupdate)
         self.create_action('toggle', self.on_toggle)
         self.create_action('autostart', self.on_autostart)
-        self.create_action('monitor', self.on_monitor_dialog)
         self.create_action('hyprlandhomepage', self.on_hyprlandhomepage)
         self.create_action('hyprlandwiki', self.on_hyprlandwiki)
         self.create_action('systeminfo', self.on_system_info)
@@ -91,11 +89,6 @@ class MyApp(Adw.Application):
         self.create_action('sddm_disable', self.on_sddm_disable)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
-        self.create_action('hypridle_systemctl', self.on_hypridle_systemctl)
-        self.create_action('hypridle_dpms', self.on_hypridle_dpms)
-        self.create_action('hypridle_nosuspend', self.on_hypridle_nosuspend)
-        self.create_action('hypridle_dpmssuspend', self.on_hypridle_dpmssuspend)
-        self.create_action('hypridle_disabled', self.on_hypridle_disabled)
 
     def do_activate(self):
         win = self.props.active_window
@@ -215,71 +208,6 @@ class MyApp(Adw.Application):
 
         subprocess.Popen(["hyprctl", "dispatch", "togglefloating", "com.ml4w.welcome"])
 
-    def on_hypridle_disabled(self, widget, _):
-        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_disabled.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
-        dialog = Adw.MessageDialog(
-            heading = "Hypridle Settings",
-            body = "Hypridle disabled. Hyprlock and suspend will not start. Please logout and login again.",
-            close_response = "cancel"
-        )
-        dialog.set_transient_for(self.win)
-        dialog.set_destroy_with_parent(True)
-        dialog.set_modal(True)
-        dialog.add_response("ok", "OK")
-        dialog.choose(None)
-
-    def on_hypridle_nosuspend(self, widget, _):
-        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_nosuspend.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
-        dialog = Adw.MessageDialog(
-            heading = "Hypridle Settings",
-            body = "Hypridle suspend disabled. Please logout and login again.",
-            close_response = "cancel"
-        )
-        dialog.set_transient_for(self.win)
-        dialog.set_destroy_with_parent(True)
-        dialog.set_modal(True)
-        dialog.add_response("ok", "OK")
-        dialog.choose(None)
-
-    def on_hypridle_dpmssuspend(self, widget, _):
-        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_dpmssuspend.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
-        dialog = Adw.MessageDialog(
-            heading = "Hypridle Settings",
-            body = "Hypridle dpms and suspend enabled. Please logout and login again.",
-            close_response = "cancel"
-        )
-        dialog.set_transient_for(self.win)
-        dialog.set_destroy_with_parent(True)
-        dialog.set_modal(True)
-        dialog.add_response("ok", "OK")
-        dialog.choose(None)
-
-    def on_hypridle_dpms(self, widget, _):
-        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_dpms.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
-        dialog = Adw.MessageDialog(
-            heading = "Hypridle Settings",
-            body = "Hypridle suspend set to dpms (for Desktop PCs). Please logout and login again.",
-            close_response = "cancel"
-        )
-        dialog.set_transient_for(self.win)
-        dialog.set_destroy_with_parent(True)
-        dialog.set_modal(True)
-        dialog.add_response("ok", "OK")
-        dialog.choose(None)
-
-    def on_hypridle_systemctl(self, widget, _):
-        shutil.copyfile(self.homeFolder + "/dotfiles/hypr/conf/hypridle/hypridle_systemctl.conf", self.homeFolder + "/dotfiles/hypr/hypridle.conf")
-        dialog = Adw.MessageDialog(
-            heading = "Hypridle Settings",
-            body = "Hypridle suspend set to systemctl (for Laptops). Please logout and login again.",
-            close_response = "cancel"
-        )
-        dialog.set_transient_for(self.win)
-        dialog.set_destroy_with_parent(True)
-        dialog.set_modal(True)
-        dialog.add_response("ok", "OK")
-        dialog.choose(None)
-
     def on_settings(self, widget, _):
         subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])
 
@@ -358,25 +286,6 @@ class MyApp(Adw.Application):
                 os.remove(self.homeFolder + "/.cache/ml4w-welcome-autostart")
         else:
             file = open(self.homeFolder + "/.cache/ml4w-welcome-autostart", "w+")
-
-    def on_waybar_toggle(self, widget, _):
-        if (os.path.exists(self.homeFolder + "/.cache/waybar-disabled")):
-            os.remove(self.homeFolder + "/.cache/waybar-disabled")
-        else:
-            file = open(self.homeFolder + "/.cache/waybar-disabled", "w+")
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
-
-    def on_monitor_dialog(self, widget, win):
-        dialog = Adw.MessageDialog(
-            heading = "Monitor Settings",
-            body = "Open ML4W Dotfiles Settings to change the screen resolution (Monitor Variations). If your monitor resolution is not listed, you can create a custom monitor variation.",
-            close_response = "cancel"
-        )
-        dialog.set_transient_for(self.win)
-        dialog.set_destroy_with_parent(True)
-        dialog.set_modal(True)
-        dialog.add_response("ok", "OK")
-        dialog.choose(None)
 
     # Add Application actions
     def create_action(self, name, callback, shortcuts=None):
