@@ -267,7 +267,7 @@
       <submenu>
         <attribute name="label" translatable="true">Appearance</attribute>
         <item>
-          <attribute name="label">Update Wallpaper</attribute>
+          <attribute name="label">Change Wallpaper</attribute>
           <attribute name="action">app.wallpaper</attribute>
         </item>
         <item>
