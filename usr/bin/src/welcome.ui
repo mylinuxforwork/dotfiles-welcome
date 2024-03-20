@@ -90,7 +90,7 @@
                 <!-- ML4W Headline -->
                 <child>
                   <object class="GtkLabel">
-                    <property name="label">Welcome to ML4W dotfiles</property>
+                    <property name="label">Welcome to ML4W Dotfiles</property>
                     <style>
                       <class name="title-1"/>
                     </style>
