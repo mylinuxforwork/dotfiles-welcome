@@ -55,6 +55,8 @@ class MyApp(Adw.Application):
     tiling = False
     browser = "chromium"
     terminal = "alacritty"
+    editor = "mousepad"
+    filemanager = "thunar"
     win = Adw.ApplicationWindow()
 
     def __init__(self, **kwargs):
@@ -89,6 +91,7 @@ class MyApp(Adw.Application):
         self.create_action('sddm_disable', self.on_sddm_disable)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
+        self.create_action('keyboard', self.on_keyboard)
 
     def do_activate(self):
         win = self.props.active_window
@@ -123,6 +126,12 @@ class MyApp(Adw.Application):
         # get Terminal
         self.getTerminal()
 
+        # get Editor
+        self.getEditor()
+
+        # get Filemanager
+        self.getFilemanager()
+
         # Show Application Window
         win.present()
 
@@ -148,6 +157,22 @@ class MyApp(Adw.Application):
             print (":: Using Browser " + self.browser)
         except:
             print("ERROR: Could not read the file /dotfiles/.settings/browser.sh")
+
+    def getEditor(self):
+        try:
+            result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/editor.sh"], capture_output=True, text=True)
+            self.editor = result.stdout.strip()
+            print (":: Using Editor " + self.editor)
+        except:
+            print("ERROR: Could not read the file /dotfiles/.settings/editor.sh")
+
+    def getFilemanager(self):
+        try:
+            result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/filemanager.sh"], capture_output=True, text=True)
+            self.filemanager = result.stdout.strip()
+            print (":: Using Filemanager " + self.filemanager)
+        except:
+            print("ERROR: Could not read the file /dotfiles/.settings/filemanager.sh")
 
     def on_update_dotfiles(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/update.sh"])
@@ -183,7 +208,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.3",
+            version="1.4",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -207,6 +232,9 @@ class MyApp(Adw.Application):
             self.tiling = True
 
         subprocess.Popen(["hyprctl", "dispatch", "togglefloating", "com.ml4w.welcome"])
+
+    def on_keyboard(self, widget, _):
+        subprocess.Popen([self.editor, self.homeFolder + "/dotfiles/hypr/conf/keyboard.conf"])
 
     def on_settings(self, widget, _):
         subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])
@@ -263,7 +291,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/wallpaper.sh","select"])
 
     def on_wallpaper_folder(self, widget, _):
-        subprocess.Popen(["xdg-open", self.homeFolder + "/wallpaper/"])
+        subprocess.Popen([self.filemanager, self.homeFolder + "/wallpaper/"])
 
     def on_waybartheme(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])

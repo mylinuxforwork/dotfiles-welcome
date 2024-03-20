@@ -232,16 +232,16 @@
 
     <section>
       <item>
-        <attribute name="label">System Info</attribute>
-        <attribute name="action">app.systeminfo</attribute>
-      </item>
-      <item>
-        <attribute name="label">Update Dotfiles</attribute>
+        <attribute name="label">Update/Reinstall Dotfiles</attribute>
         <attribute name="action">app.update_dotfiles</attribute>
       </item>
     </section>
 
     <section>
+      <item>
+        <attribute name="label">System Info</attribute>
+        <attribute name="action">app.systeminfo</attribute>
+      </item>
       <item>
         <attribute name="label">About</attribute>
         <attribute name="action">app.about</attribute>
@@ -264,6 +264,41 @@
       </item>
     </section>
     <section>
+      <submenu>
+        <attribute name="label" translatable="true">System</attribute>
+        <item>
+          <attribute name="label">Keyboard configuration</attribute>
+          <attribute name="action">app.keyboard</attribute>
+        </item>
+        <item>
+          <attribute name="label">Monitor variations</attribute>
+          <attribute name="action">app.settings</attribute>
+        </item>
+        <item>
+          <attribute name="label">Update your system</attribute>
+          <attribute name="action">app.update</attribute>
+        </item>
+        <item>
+          <attribute name="label">Cleanup your system</attribute>
+          <attribute name="action">app.cleanup</attribute>
+        </item>
+        <item>
+          <attribute name="label">Unlock pacman database</attribute>
+          <attribute name="action">app.unlock</attribute>
+        </item>
+        <item>
+          <attribute name="label">Install Timeshift</attribute>
+          <attribute name="action">app.timeshift</attribute>
+        </item>
+        <item>
+          <attribute name="label">Network Settings</attribute>
+          <attribute name="action">app.network</attribute>
+        </item>
+        <item>
+          <attribute name="label">Set Thunar Terminal</attribute>
+          <attribute name="action">app.thunarterminal</attribute>
+        </item>
+      </submenu>    
       <submenu>
         <attribute name="label" translatable="true">Appearance</attribute>
         <item>
@@ -307,33 +342,6 @@
         <item>
           <attribute name="label" translatable="true">Enable SDDM</attribute>
           <attribute name="action">app.sddm_enable</attribute>
-        </item>
-      </submenu>
-      <submenu>
-        <attribute name="label" translatable="true">System</attribute>
-        <item>
-          <attribute name="label">Update your system</attribute>
-          <attribute name="action">app.update</attribute>
-        </item>
-        <item>
-          <attribute name="label">Cleanup your system</attribute>
-          <attribute name="action">app.cleanup</attribute>
-        </item>
-        <item>
-          <attribute name="label">Unlock pacman database</attribute>
-          <attribute name="action">app.unlock</attribute>
-        </item>
-        <item>
-          <attribute name="label">Install Timeshift</attribute>
-          <attribute name="action">app.timeshift</attribute>
-        </item>
-        <item>
-          <attribute name="label">Network Settings</attribute>
-          <attribute name="action">app.network</attribute>
-        </item>
-        <item>
-          <attribute name="label">Set Thunar Terminal</attribute>
-          <attribute name="action">app.thunarterminal</attribute>
         </item>
       </submenu>
     </section>
