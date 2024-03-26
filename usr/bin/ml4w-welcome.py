@@ -92,6 +92,8 @@ class MyApp(Adw.Application):
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
+        self.create_action('changelog', self.on_changelog)
+        self.create_action('diagnosis', self.on_diagnosis)
 
     def do_activate(self):
         win = self.props.active_window
@@ -115,7 +117,7 @@ class MyApp(Adw.Application):
         self.readDotfilesVersion(win)
 
         # Force dark theme
-        self.changeTheme(win)
+        # self.changeTheme(win)
 
         # Check for updates
         self.checkForUpdates(win)
@@ -208,7 +210,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.4",
+            version="1.5",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -242,6 +244,9 @@ class MyApp(Adw.Application):
     def on_system_info(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
 
+    def on_diagnosis(self, widget, _):
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/diagnosis.sh"])
+
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
 
@@ -271,6 +276,9 @@ class MyApp(Adw.Application):
 
     def on_keybindings(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
+
+    def on_changelog(self, widget, _):
+        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/CHANGELOG"])
 
     def on_hyprlandhomepage(self, widget, _):
         subprocess.Popen([self.browser, "https://hyprland.org/"])

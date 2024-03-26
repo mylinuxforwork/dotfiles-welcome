@@ -210,12 +210,16 @@
 
     <section>
       <item>
-        <attribute name="label">ML4W dotfiles GitLab</attribute>
+        <attribute name="label">ML4W Dotfiles GitLab</attribute>
         <attribute name="action">app.gitlab</attribute>
       </item>
       <item>
         <attribute name="label">ML4W YouTube Channel</attribute>
         <attribute name="action">app.youtube</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W Dotfiles CHANGELOG</attribute>
+        <attribute name="action">app.changelog</attribute>
       </item>
     </section>
 
@@ -241,6 +245,10 @@
       <item>
         <attribute name="label">System Info</attribute>
         <attribute name="action">app.systeminfo</attribute>
+      </item>
+      <item>
+        <attribute name="label">Diagnosis</attribute>
+        <attribute name="action">app.diagnosis</attribute>
       </item>
       <item>
         <attribute name="label">About</attribute>
