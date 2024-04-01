@@ -94,6 +94,7 @@ class MyApp(Adw.Application):
         self.create_action('keyboard', self.on_keyboard)
         self.create_action('changelog', self.on_changelog)
         self.create_action('diagnosis', self.on_diagnosis)
+        self.create_action('uninstall', self.on_uninstall)
 
     def do_activate(self):
         win = self.props.active_window
@@ -210,7 +211,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.5",
+            version="1.6",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -249,6 +250,9 @@ class MyApp(Adw.Application):
 
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
+
+    def on_uninstall(self, widget, _):
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/uninstall.sh"])
 
     def on_system_timeshift(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installtimeshift.sh"])
