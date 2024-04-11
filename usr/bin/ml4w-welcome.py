@@ -67,6 +67,7 @@ class MyApp(Adw.Application):
         self.create_action('cleanup', self.on_system_cleanup)
         self.create_action('about', self.on_about)
         self.create_action('settings', self.on_settings)
+        self.create_action('hyprlandsettings', self.on_hyprlandsettings)
         self.create_action('waybar_reload', self.on_waybar_reload)
         self.create_action('keybindings', self.on_keybindings)
         self.create_action('gitlab', self.on_gitlab)
@@ -211,7 +212,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.6",
+            version="1.7",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -238,6 +239,9 @@ class MyApp(Adw.Application):
 
     def on_keyboard(self, widget, _):
         subprocess.Popen([self.editor, self.homeFolder + "/dotfiles/hypr/conf/keyboard.conf"])
+
+    def on_hyprlandsettings(self, widget, _):
+        subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Hyprland_Settings-x86_64.AppImage"])
 
     def on_settings(self, widget, _):
         subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])

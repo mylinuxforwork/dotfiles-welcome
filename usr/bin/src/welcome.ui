@@ -280,6 +280,10 @@
         <attribute name="label">ML4W Dotfiles Settings</attribute>
         <attribute name="action">app.settings</attribute>
       </item>
+      <item>
+        <attribute name="label">ML4W Hyprland Settings</attribute>
+        <attribute name="action">app.hyprlandsettings</attribute>
+      </item>
     </section>
     <section>
       <submenu>
