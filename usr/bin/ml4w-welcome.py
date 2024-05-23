@@ -75,6 +75,7 @@ class MyApp(Adw.Application):
         self.create_action('wallpaper', self.on_wallpaper)
         self.create_action('wallpaper_folder', self.on_wallpaper_folder)
         self.create_action('network', self.on_network)
+        self.create_action('bluetooth', self.on_bluetooth)
         self.create_action('waybartheme', self.on_waybartheme)
         self.create_action('gtktheme', self.on_gtktheme)
         self.create_action('gtkrefresh', self.on_gtkrefresh)
@@ -96,6 +97,8 @@ class MyApp(Adw.Application):
         self.create_action('changelog', self.on_changelog)
         self.create_action('diagnosis', self.on_diagnosis)
         self.create_action('uninstall', self.on_uninstall)
+        self.create_action('nm-applet-start', self.on_nmapplet_start)
+        self.create_action('nm-applet-stop', self.on_nmapplet_stop)
 
     def do_activate(self):
         win = self.props.active_window
@@ -212,7 +215,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="1.7",
+            version="2.0",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -250,7 +253,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
 
     def on_diagnosis(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/diagnosis.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/hypr/scripts/diagnosis.sh"])
 
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
@@ -278,6 +281,12 @@ class MyApp(Adw.Application):
 
     def on_sddm_enable(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/enable.sh"])
+
+    def on_nmapplet_start(self, widget, _):
+        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/scripts/nm-applet.sh"])
+
+    def on_nmapplet_stop(self, widget, _):
+        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/scripts/nm-applet.sh","stop"])
 
     def on_waybar_reload(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
@@ -315,6 +324,9 @@ class MyApp(Adw.Application):
     def on_network(self, widget, _):
         subprocess.Popen(["nm-connection-editor"])
 
+    def on_bluetooth(self, widget, _):
+        subprocess.Popen(["overskride"])
+
     def on_gtktheme(self, widget, _):
         subprocess.Popen(["nwg-look"])
 
@@ -322,7 +334,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/gtk.sh"])
 
     def on_exit_hyprland(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/exit.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/power.sh exit"])
 
     def on_autostart(self, widget, _):
         if(self.switch_autostart.get_active()):

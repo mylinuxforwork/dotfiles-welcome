@@ -288,38 +288,56 @@
     <section>
       <submenu>
         <attribute name="label" translatable="true">System</attribute>
-        <item>
-          <attribute name="label">Keyboard configuration</attribute>
-          <attribute name="action">app.keyboard</attribute>
-        </item>
-        <item>
-          <attribute name="label">Monitor variations</attribute>
-          <attribute name="action">app.settings</attribute>
-        </item>
-        <item>
-          <attribute name="label">Update your system</attribute>
-          <attribute name="action">app.update</attribute>
-        </item>
-        <item>
-          <attribute name="label">Cleanup your system</attribute>
-          <attribute name="action">app.cleanup</attribute>
-        </item>
-        <item>
-          <attribute name="label">Unlock pacman database</attribute>
-          <attribute name="action">app.unlock</attribute>
-        </item>
-        <item>
-          <attribute name="label">Install Timeshift</attribute>
-          <attribute name="action">app.timeshift</attribute>
-        </item>
-        <item>
-          <attribute name="label">Network Settings</attribute>
-          <attribute name="action">app.network</attribute>
-        </item>
-        <item>
-          <attribute name="label">Set Thunar Terminal</attribute>
-          <attribute name="action">app.thunarterminal</attribute>
-        </item>
+          <section>
+            <item>
+              <attribute name="label">Keyboard configuration</attribute>
+              <attribute name="action">app.keyboard</attribute>
+            </item>
+            <item>
+              <attribute name="label">Monitor variations</attribute>
+              <attribute name="action">app.settings</attribute>
+            </item>
+            <item>
+              <attribute name="label">Network settings</attribute>
+              <attribute name="action">app.network</attribute>
+            </item>
+            <item>
+              <attribute name="label">Bluetooth</attribute>
+              <attribute name="action">app.bluetooth</attribute>
+            </item>
+            <item>
+              <attribute name="label">Start nm-applet</attribute>
+              <attribute name="action">app.nm-applet-start</attribute>
+            </item>
+            <item>
+              <attribute name="label">Stop nm-applet</attribute>
+              <attribute name="action">app.nm-applet-stop</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label">Update your system</attribute>
+              <attribute name="action">app.update</attribute>
+            </item>
+            <item>
+              <attribute name="label">Cleanup your system</attribute>
+              <attribute name="action">app.cleanup</attribute>
+            </item>
+            <item>
+              <attribute name="label">Unlock pacman database</attribute>
+              <attribute name="action">app.unlock</attribute>
+            </item>
+            <item>
+              <attribute name="label">Install Timeshift</attribute>
+              <attribute name="action">app.timeshift</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label">Set "Open in Terminal" for Thunar</attribute>
+              <attribute name="action">app.thunarterminal</attribute>
+            </item>
+          </section>
       </submenu>    
       <submenu>
         <attribute name="label" translatable="true">Appearance</attribute>
