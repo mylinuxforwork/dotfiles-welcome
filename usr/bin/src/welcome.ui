@@ -320,6 +320,10 @@
               <attribute name="action">app.update</attribute>
             </item>
             <item>
+              <attribute name="label">Configure pacman.conf</attribute>
+              <attribute name="action">app.pacman</attribute>
+            </item>
+            <item>
               <attribute name="label">Cleanup your system</attribute>
               <attribute name="action">app.cleanup</attribute>
             </item>

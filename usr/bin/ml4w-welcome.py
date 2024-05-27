@@ -64,6 +64,7 @@ class MyApp(Adw.Application):
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('update', self.on_system_update)
+        self.create_action('pacman', self.on_pacman)
         self.create_action('cleanup', self.on_system_cleanup)
         self.create_action('about', self.on_about)
         self.create_action('settings', self.on_settings)
@@ -215,7 +216,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.0",
+            version="2.9.1",
             website="https://gitlab.com/stephan-raabe/dotfiles",
             issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
             support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
@@ -258,6 +259,9 @@ class MyApp(Adw.Application):
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
 
+    def on_pacman(self, widget, _):
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/pacman.sh"])
+
     def on_uninstall(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/uninstall.sh"])
 
@@ -295,7 +299,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
 
     def on_changelog(self, widget, _):
-        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/CHANGELOG"])
+        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/CHANGELOG.md"])
 
     def on_hyprlandhomepage(self, widget, _):
         subprocess.Popen([self.browser, "https://hyprland.org/"])
