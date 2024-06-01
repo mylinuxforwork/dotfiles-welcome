@@ -214,12 +214,16 @@
         <attribute name="action">app.gitlab</attribute>
       </item>
       <item>
-        <attribute name="label">ML4W YouTube Channel</attribute>
-        <attribute name="action">app.youtube</attribute>
+        <attribute name="label">ML4W Dotfiles Wiki</attribute>
+        <attribute name="action">app.wiki</attribute>
       </item>
       <item>
         <attribute name="label">ML4W Dotfiles CHANGELOG</attribute>
         <attribute name="action">app.changelog</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W YouTube Channel</attribute>
+        <attribute name="action">app.youtube</attribute>
       </item>
     </section>
 

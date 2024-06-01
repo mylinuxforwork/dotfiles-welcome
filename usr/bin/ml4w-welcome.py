@@ -96,6 +96,7 @@ class MyApp(Adw.Application):
         self.create_action('update_dotfiles', self.on_update_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
         self.create_action('changelog', self.on_changelog)
+        self.create_action('wiki', self.on_wiki)
         self.create_action('diagnosis', self.on_diagnosis)
         self.create_action('uninstall', self.on_uninstall)
         self.create_action('nm-applet-start', self.on_nmapplet_start)
@@ -297,6 +298,9 @@ class MyApp(Adw.Application):
 
     def on_keybindings(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
+
+    def on_wiki(self, widget, _):
+        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/wikis/home"])
 
     def on_changelog(self, widget, _):
         subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/CHANGELOG.md"])
