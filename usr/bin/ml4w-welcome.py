@@ -60,8 +60,8 @@ class MyApp(Adw.Application):
     win = Adw.ApplicationWindow()
 
     def __init__(self, **kwargs):
-        super().__init__(application_id='com.ml4w.welcome',
-                         flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
+        super().__init__(application_id='com.ml4w.welcome', flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
+        
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('update', self.on_system_update)
         self.create_action('pacman', self.on_pacman)
@@ -321,7 +321,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.browser, "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
 
     def on_wallpaper(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/wallpaper.sh","select"])
+        subprocess.Popen(["waypaper")
 
     def on_wallpaper_folder(self, widget, _):
         subprocess.Popen([self.filemanager, self.homeFolder + "/wallpaper/"])
