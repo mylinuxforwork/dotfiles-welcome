@@ -321,7 +321,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.browser, "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
 
     def on_wallpaper(self, widget, _):
-        subprocess.Popen(["waypaper")
+        subprocess.Popen(["waypaper"])
 
     def on_wallpaper_folder(self, widget, _):
         subprocess.Popen([self.filemanager, self.homeFolder + "/wallpaper/"])
