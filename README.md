@@ -22,10 +22,10 @@ In the Settings Menu you can access the following functions:
 - Toggle Waybar: You can hide or show waybar when you want to try our other status bars.
 
 The ML4W Welcome App starts several scripts from the ML4W dotfiles:
-https://gitlab.com/stephan-raabe/dotfiles
+https://github.com/mylinuxforwork/dotfiles
 
 You can find the sourcecode of the ML4W Welcome App in this repository:
-https://gitlab.com/stephan-raabe/ml4w-welcome
+https://github.com/mylinuxforwork/dotfiles-welcome
 
 ## GTK Development Resources 
 

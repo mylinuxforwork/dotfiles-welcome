@@ -1,4 +1,3 @@
-Version 1.0.1
+Version 2.9.3
 --------------------------------------------------------
-Add Hyprland System Info menu entry. Executes script with hyprctl systeminfo
-Add menu item to remove pacman db.lck file
+Updates all link to target GitHub and not GitLab anymore
