@@ -210,7 +210,7 @@
 
     <section>
       <item>
-        <attribute name="label">ML4W Dotfiles GitLab</attribute>
+        <attribute name="label">ML4W Dotfiles GitHub</attribute>
         <attribute name="action">app.gitlab</attribute>
       </item>
       <item>

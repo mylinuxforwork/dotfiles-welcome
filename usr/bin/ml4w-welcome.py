@@ -217,10 +217,10 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.1",
-            website="https://gitlab.com/stephan-raabe/dotfiles",
-            issue_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
-            support_url="https://gitlab.com/stephan-raabe/dotfiles/-/issues",
+            version="2.9.3",
+            website="https://github.com/mylinuxforwork/dotfiles",
+            issue_url="https://github.com/mylinuxforwork/dotfiles/issues",
+            support_url="https://github.com/mylinuxforwork/dotfiles/issues",
             copyright="© 2024 Stephan Raabe",
             license_type=Gtk.License.GPL_3_0_ONLY
         )
@@ -300,10 +300,10 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
 
     def on_wiki(self, widget, _):
-        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/wikis/home"])
+        subprocess.Popen([self.browser, "https://github.com/mylinuxforwork/dotfiles/wiki"])
 
     def on_changelog(self, widget, _):
-        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles/-/blob/main/CHANGELOG.md"])
+        subprocess.Popen([self.browser, "https://github.com/mylinuxforwork/dotfiles/blob/main/CHANGELOG.md"])
 
     def on_hyprlandhomepage(self, widget, _):
         subprocess.Popen([self.browser, "https://hyprland.org/"])
@@ -312,10 +312,10 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.browser, "https://wiki.hyprland.org/"])
 
     def on_gitlab(self, widget, _):
-        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles"])
+        subprocess.Popen([self.browser, "https://github.com/mylinuxforwork/dotfiles"])
 
     def on_howtoupdate(self, widget, _):
-        subprocess.Popen([self.browser, "https://gitlab.com/stephan-raabe/dotfiles#update-with-git"])
+        subprocess.Popen([self.browser, "https://github.com/mylinuxforwork/dotfiles/wiki"])
         
     def on_youtube(self, widget, _):
         subprocess.Popen([self.browser, "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
