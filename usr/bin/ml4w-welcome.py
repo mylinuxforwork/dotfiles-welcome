@@ -244,7 +244,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["hyprctl", "dispatch", "togglefloating", "com.ml4w.welcome"])
 
     def on_keyboard(self, widget, _):
-        subprocess.Popen([self.editor, self.homeFolder + "/dotfiles/hypr/conf/keyboard.conf"])
+        subprocess.Popen([self.editor, self.homeFolder + "/.config/hypr/conf/keyboard.conf"])
 
     def on_hyprlandsettings(self, widget, _):
         subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Hyprland_Settings-x86_64.AppImage"])
@@ -256,7 +256,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
 
     def on_diagnosis(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/hypr/scripts/diagnosis.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/diagnosis.sh"])
 
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
@@ -298,7 +298,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
 
     def on_keybindings(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/keybindings.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/hypr/scripts/keybindings.sh"])
 
     def on_wiki(self, widget, _):
         subprocess.Popen([self.browser, "https://github.com/mylinuxforwork/dotfiles/wiki"])
@@ -343,10 +343,10 @@ class MyApp(Adw.Application):
         subprocess.Popen(["qt6ct"])
 
     def on_gtkrefresh(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/gtk.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/hypr/scripts/gtk.sh"])
 
     def on_exit_hyprland(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/power.sh exit"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/hypr/scripts/power.sh exit"])
 
     def on_autostart(self, widget, _):
         if(self.switch_autostart.get_active()):
