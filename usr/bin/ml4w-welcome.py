@@ -79,6 +79,7 @@ class MyApp(Adw.Application):
         self.create_action('bluetooth', self.on_bluetooth)
         self.create_action('waybartheme', self.on_waybartheme)
         self.create_action('gtktheme', self.on_gtktheme)
+        self.create_action('qt6theme', self.on_qt6theme)
         self.create_action('gtkrefresh', self.on_gtkrefresh)
         self.create_action('howtoupdate', self.on_howtoupdate)
         self.create_action('toggle', self.on_toggle)
@@ -337,6 +338,9 @@ class MyApp(Adw.Application):
 
     def on_gtktheme(self, widget, _):
         subprocess.Popen(["nwg-look"])
+
+    def on_qt6theme(self, widget, _):
+        subprocess.Popen(["qt6ct"])
 
     def on_gtkrefresh(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/dotfiles/hypr/scripts/gtk.sh"])

@@ -366,6 +366,10 @@
           <attribute name="action">app.gtktheme</attribute>
         </item>
         <item>
+          <attribute name="label">Change QT6 Theme</attribute>
+          <attribute name="action">app.qt6theme</attribute>
+        </item>
+        <item>
           <attribute name="label">Refresh GTK Settings</attribute>
           <attribute name="action">app.gtkrefresh</attribute>
         </item>
