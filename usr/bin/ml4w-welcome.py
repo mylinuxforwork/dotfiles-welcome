@@ -154,42 +154,42 @@ class MyApp(Adw.Application):
 
     def getTerminal(self):
         try:
-            result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/terminal.sh"], capture_output=True, text=True)
+            result = subprocess.run(["cat", self.homeFolder + "/.config/ml4w/settings/terminal.sh"], capture_output=True, text=True)
             self.terminal = result.stdout.strip()
             print (":: Using Terminal " + self.terminal)
         except:
-            print("ERROR: Could not read the file /dotfiles/.settings/terminal.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/settings/terminal.sh")
 
     def getBrowser(self):
         try:
-            result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/browser.sh"], capture_output=True, text=True)
+            result = subprocess.run(["cat", self.homeFolder + "/.config/ml4w/settings/browser.sh"], capture_output=True, text=True)
             self.browser = result.stdout.strip()
             print (":: Using Browser " + self.browser)
         except:
-            print("ERROR: Could not read the file /dotfiles/.settings/browser.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/settings/browser.sh")
 
     def getEditor(self):
         try:
-            result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/editor.sh"], capture_output=True, text=True)
+            result = subprocess.run(["cat", self.homeFolder + "/.config/ml4w/settings/editor.sh"], capture_output=True, text=True)
             self.editor = result.stdout.strip()
             print (":: Using Editor " + self.editor)
         except:
-            print("ERROR: Could not read the file /dotfiles/.settings/editor.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/settings/editor.sh")
 
     def getFilemanager(self):
         try:
-            result = subprocess.run(["cat", self.homeFolder + "/dotfiles/.settings/filemanager.sh"], capture_output=True, text=True)
+            result = subprocess.run(["cat", self.homeFolder + "/.config/ml4w/settings/filemanager.sh"], capture_output=True, text=True)
             self.filemanager = result.stdout.strip()
             print (":: Using Filemanager " + self.filemanager)
         except:
-            print("ERROR: Could not read the file /dotfiles/.settings/filemanager.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/settings/filemanager.sh")
 
     def on_update_dotfiles(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/update.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/update.sh"])
 
     def checkForUpdates(self,win):
         try:
-            result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/update.sh"], capture_output=True, text=True)
+            result = subprocess.run(["bash", self.homeFolder + "/.config/ml4w/version/update.sh"], capture_output=True, text=True)
             web_version = result.stdout.strip()
             # print("Update " +  web_version)
 
@@ -197,11 +197,11 @@ class MyApp(Adw.Application):
                 # print("Show update banner")
                 win.update_banner.set_revealed(True)
         except:
-            print("ERROR: Could not read the file /dotfiles/.version/update.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/version/update.sh")
 
     def readDotfilesVersion(self,win):
         try:
-            result = subprocess.run(["bash", self.homeFolder + "/dotfiles/.version/version.sh"], capture_output=True, text=True)
+            result = subprocess.run(["bash", self.homeFolder + "/.config/ml4w/version/version.sh"], capture_output=True, text=True)
             # print("Version " +  result.stdout)
             version = result.stdout
             version_arr = version.split(" ")
@@ -209,7 +209,7 @@ class MyApp(Adw.Application):
             self.current_version_code = version_arr[1]
             win.ml4w_version.set_text("Version: " + self.current_version_name)
         except:
-            print("ERROR: Could not read the file /dotfiles/.version/version.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/version/version.sh")
             win.ml4w_version.set_text("")
 
     def on_about(self, widget, _):
@@ -247,10 +247,10 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.editor, self.homeFolder + "/.config/hypr/conf/keyboard.conf"])
 
     def on_hyprlandsettings(self, widget, _):
-        subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Hyprland_Settings-x86_64.AppImage"])
+        subprocess.Popen([self.homeFolder + "/.config/ml4w/apps/ML4W_Hyprland_Settings-x86_64.AppImage"])
 
     def on_settings(self, widget, _):
-        subprocess.Popen([self.homeFolder + "/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])
+        subprocess.Popen([self.homeFolder + "/.config/ml4w/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])
 
     def on_system_info(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
@@ -259,43 +259,43 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/diagnosis.sh"])
 
     def on_system_update(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installupdates.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installupdates.sh"])
 
     def on_pacman(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/pacman.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/pacman.sh"])
 
     def on_uninstall(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/uninstall.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/uninstall.sh"])
 
     def on_system_timeshift(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/installtimeshift.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installtimeshift.sh"])
 
     def on_system_thunarterminal(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/thunarterminal.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/thunarterminal.sh"])
 
     def on_system_unlock(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/unlock-pacman.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/unlock-pacman.sh"])
 
     def on_system_cleanup(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/scripts/cleanup.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/cleanup.sh"])
 
     def on_sddm_wallpaper(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/wallpaper.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/wallpaper.sh"])
 
     def on_sddm_disable(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/disable.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/disable.sh"])
 
     def on_sddm_enable(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles/sddm/scripts/enable.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/enable.sh"])
 
     def on_nmapplet_start(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/scripts/nm-applet.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh"])
 
     def on_nmapplet_stop(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/scripts/nm-applet.sh","stop"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh","stop"])
 
     def on_waybar_reload(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/launch.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/waybar/launch.sh"])
 
     def on_keybindings(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/.config/hypr/scripts/keybindings.sh"])
@@ -328,7 +328,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.filemanager, self.homeFolder + "/wallpaper/"])
 
     def on_waybartheme(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/dotfiles/waybar/themeswitcher.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/waybar/themeswitcher.sh"])
 
     def on_network(self, widget, _):
         subprocess.Popen(["nm-connection-editor"])
