@@ -69,7 +69,6 @@ class MyApp(Adw.Application):
         self.create_action('about', self.on_about)
         self.create_action('settings', self.on_settings)
         self.create_action('hyprlandsettings', self.on_hyprlandsettings)
-        self.create_action('waybar_reload', self.on_waybar_reload)
         self.create_action('keybindings', self.on_keybindings)
         self.create_action('gitlab', self.on_gitlab)
         self.create_action('youtube', self.on_youtube)
@@ -218,7 +217,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.3",
+            version="2.9.5",
             website="https://github.com/mylinuxforwork/dotfiles",
             issue_url="https://github.com/mylinuxforwork/dotfiles/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles/issues",
@@ -294,9 +293,6 @@ class MyApp(Adw.Application):
     def on_nmapplet_stop(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh","stop"])
 
-    def on_waybar_reload(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/.config/waybar/launch.sh"])
-
     def on_keybindings(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/.config/hypr/scripts/keybindings.sh"])
 
@@ -334,7 +330,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["nm-connection-editor"])
 
     def on_bluetooth(self, widget, _):
-        subprocess.Popen(["overskride"])
+        subprocess.Popen(["blueman-manager"])
 
     def on_gtktheme(self, widget, _):
         subprocess.Popen(["nwg-look"])

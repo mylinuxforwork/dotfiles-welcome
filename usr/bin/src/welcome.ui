@@ -375,13 +375,6 @@
         </item>
       </submenu>
       <submenu>
-        <attribute name="label" translatable="true">Waybar</attribute>
-        <item>
-          <attribute name="label">Reload Waybar</attribute>
-          <attribute name="action">app.waybar_reload</attribute>
-        </item>
-      </submenu>      
-      <submenu>
         <attribute name="label" translatable="true">SDDM</attribute>
         <item>
           <attribute name="label" translatable="true">Set Wallpaper</attribute>
