@@ -34,6 +34,7 @@ class MainWindow(Adw.ApplicationWindow):
 
     # Get objects from template
     ml4w_version = Gtk.Template.Child()
+    ml4w_folder = Gtk.Template.Child()
     ml4w_logo = Gtk.Template.Child()
     update_banner = Gtk.Template.Child()
     btn_toggle = Gtk.Template.Child()
@@ -123,6 +124,9 @@ class MyApp(Adw.Application):
         # Check dotfiles version
         self.readDotfilesVersion(win)
 
+        # Check dotfiles folder
+        self.readDotfilesFolder(win)
+
         # Force dark theme
         # self.changeTheme(win)
 
@@ -210,6 +214,16 @@ class MyApp(Adw.Application):
         except:
             print("ERROR: Could not read the file ~/.config/ml4w/version/version.sh")
             win.ml4w_version.set_text("")
+
+    def readDotfilesFolder(self,win):
+        try:
+            with open(self.homeFolder + '/.config/ml4w/settings/dotfiles-folder.sh', 'r') as file:
+                data = file.read().rstrip()
+            win.ml4w_folder.set_text("Installed in folder: ~/" + data)
+        except:
+            print("ERROR: Could not read the file ~/.config/ml4w/settings/dotfiles-folder.sh")
+            win.ml4w_folder.set_text("")        
+
 
     def on_about(self, widget, _):
         

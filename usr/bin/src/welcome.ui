@@ -102,6 +102,15 @@
                 <child>
                   <object class="GtkLabel" id="ml4w_version">
                     <property name="label">Version</property>
+                    <property name="margin-bottom">2</property>
+                  </object>
+                </child>
+                <!-- ML4W Headline -->
+
+                <!-- ML4W Headline -->
+                <child>
+                  <object class="GtkLabel" id="ml4w_folder">
+                    <property name="label">Folder</property>
                     <property name="margin-bottom">30</property>
                   </object>
                 </child>
