@@ -60,7 +60,7 @@
             <child>
                 <object class="AdwBanner" id="update_banner">
                     <property name="button-label" translatable="true">Update now</property>
-                    <property name="title">An update for the dotfiles is available!</property>
+                    <property name="title">An update for the ML4W Dotfiles is available!</property>
                     <property name="revealed">false</property>
                     <property name="action-name">app.update_dotfiles</property>
                 </object>

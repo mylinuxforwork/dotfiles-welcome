@@ -202,7 +202,6 @@ class MyApp(Adw.Application):
         try:
             result = subprocess.run(["bash", self.homeFolder + "/.config/ml4w/version/update.sh"], capture_output=True, text=True)
             web_version = result.stdout.strip()
-            # print("Update " +  web_version)
 
             if (web_version == '0'):
                 # print("Show update banner")
