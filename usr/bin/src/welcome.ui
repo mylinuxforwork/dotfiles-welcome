@@ -311,6 +311,10 @@
         <attribute name="label" translatable="true">System</attribute>
           <section>
             <item>
+              <attribute name="label">Change shell</attribute>
+              <attribute name="action">app.shell</attribute>
+            </item>
+            <item>
               <attribute name="label">Keyboard configuration</attribute>
               <attribute name="action">app.keyboard</attribute>
             </item>

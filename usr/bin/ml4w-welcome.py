@@ -89,6 +89,7 @@ class MyApp(Adw.Application):
         self.create_action('systeminfo', self.on_system_info)
         self.create_action('unlock', self.on_system_unlock)
         self.create_action('timeshift', self.on_system_timeshift)
+        self.create_action('shell', self.on_shell)
         self.create_action('thunarterminal', self.on_system_thunarterminal)
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('sddm_enable', self.on_sddm_enable)
@@ -289,6 +290,9 @@ class MyApp(Adw.Application):
 
     def on_system_timeshift(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installtimeshift.sh"])
+
+    def on_shell(self, widget, _):
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/shell.sh"])
 
     def on_system_thunarterminal(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/thunarterminal.sh"])
