@@ -213,15 +213,12 @@ class MyApp(Adw.Application):
 
     def readDotfilesVersion(self,win):
         try:
-            result = subprocess.run(["bash", self.homeFolder + "/.config/ml4w/version/version.sh"], capture_output=True, text=True)
-            # print("Version " +  result.stdout)
-            version = result.stdout
-            version_arr = version.split(" ")
-            self.current_version_name = version_arr[0]
-            self.current_version_code = version_arr[1]
-            win.ml4w_version.set_text("Version: " + self.current_version_name)
+            with open(self.homeFolder + "/.config/ml4w/version/name", 'r') as file:
+                value = file.read()
+            print(value.strip())
+            win.ml4w_version.set_text("Version: " + value.strip())
         except:
-            print("ERROR: Could not read the file ~/.config/ml4w/version/version.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/version/name")
             win.ml4w_version.set_text("")
 
     def readDotfilesFolder(self,win):
@@ -240,7 +237,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.5",
+            version="2.9.6",
             website="https://github.com/mylinuxforwork/dotfiles",
             issue_url="https://github.com/mylinuxforwork/dotfiles/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles/issues",
