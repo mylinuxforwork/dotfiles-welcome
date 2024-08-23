@@ -331,6 +331,10 @@
               <attribute name="action">app.bluetooth</attribute>
             </item>
             <item>
+              <attribute name="label">Install printers</attribute>
+              <attribute name="action">app.printers</attribute>
+            </item>
+            <item>
               <attribute name="label">Start nm-applet</attribute>
               <attribute name="action">app.nm-applet-start</attribute>
             </item>

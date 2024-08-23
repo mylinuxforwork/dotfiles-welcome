@@ -96,6 +96,7 @@ class MyApp(Adw.Application):
         self.create_action('sddm_disable', self.on_sddm_disable)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
+        self.create_action('printers', self.on_printers)
         self.create_action('execute_postinstallation', self.on_execute_postinstallation)
         self.create_action('activate_dotfiles', self.on_activate_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
@@ -281,6 +282,9 @@ class MyApp(Adw.Application):
 
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installupdates.sh"])
+
+    def on_printers(self, widget, _):
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installprinters.sh"])
 
     def on_pacman(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/pacman.sh"])
