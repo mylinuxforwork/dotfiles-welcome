@@ -192,7 +192,7 @@ class MyApp(Adw.Application):
             print("ERROR: Could not read the file ~/.config/ml4w/settings/filemanager.sh")
 
     def on_update_dotfiles(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/update.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup -m update"])
 
     def on_execute_postinstallation(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/postinstall.sh"])
@@ -237,7 +237,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.6",
+            version="2.9.6.2",
             website="https://github.com/mylinuxforwork/dotfiles",
             issue_url="https://github.com/mylinuxforwork/dotfiles/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles/issues",
@@ -287,7 +287,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/pacman.sh"])
 
     def on_uninstall(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/uninstall.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup -m uninstall"])
 
     def on_system_timeshift(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installtimeshift.sh"])
