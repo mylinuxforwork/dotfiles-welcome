@@ -266,10 +266,10 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.editor, self.homeFolder + "/.config/hypr/conf/keyboard.conf"])
 
     def on_hyprlandsettings(self, widget, _):
-        subprocess.Popen([self.homeFolder + "/.config/ml4w/apps/ML4W_Hyprland_Settings-x86_64.AppImage"])
+        subprocess.Popen(["com.ml4w.hyprland.settings"])
 
     def on_settings(self, widget, _):
-        subprocess.Popen([self.homeFolder + "/.config/ml4w/apps/ML4W_Dotfiles_Settings-x86_64.AppImage"])
+        subprocess.Popen(["com.ml4w.dotfilessettings"])
 
     def on_system_info(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
