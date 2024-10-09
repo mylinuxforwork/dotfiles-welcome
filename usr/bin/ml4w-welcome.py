@@ -237,7 +237,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.6.2",
+            version="2.9.6.3",
             website="https://github.com/mylinuxforwork/dotfiles",
             issue_url="https://github.com/mylinuxforwork/dotfiles/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles/issues",
