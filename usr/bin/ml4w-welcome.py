@@ -287,7 +287,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/pacman.sh"])
 
     def on_uninstall(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup -m uninstall"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m", "uninstall"])
 
     def on_system_timeshift(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installtimeshift.sh"])
