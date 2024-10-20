@@ -192,7 +192,7 @@ class MyApp(Adw.Application):
             print("ERROR: Could not read the file ~/.config/ml4w/settings/filemanager.sh")
 
     def on_update_dotfiles(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup -m update"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m" "update"])
 
     def on_execute_postinstallation(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/postinstall.sh"])
