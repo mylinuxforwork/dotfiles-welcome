@@ -257,7 +257,7 @@
         <attribute name="action">app.activate_dotfiles</attribute>
       </item>
       <item>
-        <attribute name="label">Execute Post Installation</attribute>
+        <attribute name="label">Installation Options</attribute>
         <attribute name="action">app.execute_postinstallation</attribute>
       </item>
     </section>
