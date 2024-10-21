@@ -275,7 +275,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
 
     def on_diagnosis(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/diagnosis.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m", "diagnosis"])
 
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installupdates.sh"])
