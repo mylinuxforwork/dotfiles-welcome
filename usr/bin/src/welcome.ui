@@ -192,18 +192,42 @@
                 </child>            
                 <!-- Shortcut Settings -->
 
-                <!-- Shortcut Button -->
                 <child>
-                  <object class="GtkButton">
-                    <property name="margin-top">20</property>
-                    <property name="hexpand">False</property>
-                    <property name="valign">3</property>
+                  <object class="GtkBox">
+                    <property name="orientation">0</property>
                     <property name="halign">3</property>
-                    <property name="label">All keybindings</property>
-                    <property name="action-name">app.keybindings</property>
+                    <property name="spacing">10</property>
+
+
+                    <!-- Shortcut Button -->
+                    <child>
+                      <object class="GtkButton">
+                        <property name="margin-top">20</property>
+                        <property name="hexpand">False</property>
+                        <property name="valign">3</property>
+                        <property name="halign">3</property>
+                        <property name="label">All keybindings</property>
+                        <property name="action-name">app.keybindings</property>
+                      </object>
+                    </child>
+                    <!-- Shortcut Buttons -->
+
+                    <!-- Shortcut Button -->
+                    <child>
+                      <object class="GtkButton">
+                        <property name="margin-top">20</property>
+                        <property name="hexpand">False</property>
+                        <property name="valign">3</property>
+                        <property name="halign">3</property>
+                        <property name="label">Installation Options</property>
+                        <property name="action-name">app.execute_postinstallation</property>
+                      </object>
+                    </child>
+                    <!-- Shortcut Buttons -->
+
                   </object>
                 </child>
-                <!-- Shortcut Buttons -->
+
 
               </object>
             </child>
@@ -256,10 +280,6 @@
         <attribute name="label">Activate another ML4W Dotfiles folder</attribute>
         <attribute name="action">app.activate_dotfiles</attribute>
       </item>
-      <item>
-        <attribute name="label">Installation Options</attribute>
-        <attribute name="action">app.execute_postinstallation</attribute>
-      </item>
     </section>
 
     <section>
@@ -305,15 +325,46 @@
         <attribute name="label">ML4W Hyprland Settings</attribute>
         <attribute name="action">app.hyprlandsettings</attribute>
       </item>
+      <item>
+        <attribute name="label">Installation Options</attribute>
+        <attribute name="action">app.execute_postinstallation</attribute>
+      </item>
     </section>
     <section>
       <submenu>
+        <attribute name="label" translatable="true">Appearance</attribute>
+        <item>
+          <attribute name="label">Change Wallpaper</attribute>
+          <attribute name="action">app.wallpaper</attribute>
+        </item>
+        <item>
+          <attribute name="label">Set Wallpaper for SDDM</attribute>
+          <attribute name="action">app.sddm_wallpaper</attribute>
+        </item>
+        <item>
+          <attribute name="label">Set Wallpaper Effects</attribute>
+          <attribute name="action">app.wallpapereffects</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change Waybar Theme</attribute>
+          <attribute name="action">app.waybartheme</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change GTK Theme</attribute>
+          <attribute name="action">app.gtktheme</attribute>
+        </item>
+        <item>
+          <attribute name="label">Refresh GTK Settings</attribute>
+          <attribute name="action">app.gtkrefresh</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change QT6 Theme</attribute>
+          <attribute name="action">app.qt6theme</attribute>
+        </item>
+      </submenu>
+      <submenu>
         <attribute name="label" translatable="true">System</attribute>
           <section>
-            <item>
-              <attribute name="label">Change shell</attribute>
-              <attribute name="action">app.shell</attribute>
-            </item>
             <item>
               <attribute name="label">Keyboard configuration</attribute>
               <attribute name="action">app.keyboard</attribute>
@@ -365,55 +416,7 @@
               <attribute name="action">app.timeshift</attribute>
             </item>
           </section>
-          <section>
-            <item>
-              <attribute name="label">Set "Open in Terminal" for Thunar</attribute>
-              <attribute name="action">app.thunarterminal</attribute>
-            </item>
-          </section>
       </submenu>    
-      <submenu>
-        <attribute name="label" translatable="true">Appearance</attribute>
-        <item>
-          <attribute name="label">Change Wallpaper</attribute>
-          <attribute name="action">app.wallpaper</attribute>
-        </item>
-        <item>
-          <attribute name="label">Open Wallpaper Folder</attribute>
-          <attribute name="action">app.wallpaper_folder</attribute>
-        </item>
-        <item>
-          <attribute name="label">Change Waybar Theme</attribute>
-          <attribute name="action">app.waybartheme</attribute>
-        </item>
-        <item>
-          <attribute name="label">Change GTK Theme</attribute>
-          <attribute name="action">app.gtktheme</attribute>
-        </item>
-        <item>
-          <attribute name="label">Change QT6 Theme</attribute>
-          <attribute name="action">app.qt6theme</attribute>
-        </item>
-        <item>
-          <attribute name="label">Refresh GTK Settings</attribute>
-          <attribute name="action">app.gtkrefresh</attribute>
-        </item>
-      </submenu>
-      <submenu>
-        <attribute name="label" translatable="true">SDDM</attribute>
-        <item>
-          <attribute name="label" translatable="true">Set Wallpaper</attribute>
-          <attribute name="action">app.sddm_wallpaper</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="true">Disable SDDM</attribute>
-          <attribute name="action">app.sddm_disable</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="true">Enable SDDM</attribute>
-          <attribute name="action">app.sddm_enable</attribute>
-        </item>
-      </submenu>
     </section>
     <section>
       <item>

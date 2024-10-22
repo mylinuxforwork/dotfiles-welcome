@@ -58,6 +58,7 @@ class MyApp(Adw.Application):
     terminal = "alacritty"
     editor = "mousepad"
     filemanager = "thunar"
+    networkmanager = "nm-connection-editor"
     win = Adw.ApplicationWindow()
 
     def __init__(self, **kwargs):
@@ -74,6 +75,7 @@ class MyApp(Adw.Application):
         self.create_action('gitlab', self.on_gitlab)
         self.create_action('youtube', self.on_youtube)
         self.create_action('wallpaper', self.on_wallpaper)
+        self.create_action('wallpapereffects', self.on_wallpapereffects)
         self.create_action('wallpaper_folder', self.on_wallpaper_folder)
         self.create_action('network', self.on_network)
         self.create_action('bluetooth', self.on_bluetooth)
@@ -149,6 +151,9 @@ class MyApp(Adw.Application):
         # get Filemanager
         self.getFilemanager()
 
+        # get Networkmanager
+        self.getNetworkmanager()
+
         # Show Application Window
         win.present()
 
@@ -190,6 +195,15 @@ class MyApp(Adw.Application):
             print (":: Using Filemanager " + self.filemanager)
         except:
             print("ERROR: Could not read the file ~/.config/ml4w/settings/filemanager.sh")
+
+    def getNetworkmanager(self):
+        try:
+            result = subprocess.run(["cat", self.homeFolder + "/.config/ml4w/settings/networkmanager.sh"], capture_output=True, text=True)
+            self.networkmanager = result.stdout.strip()
+            print (":: Using Networkmanager " + self.filemanager)
+        except:
+            print("ERROR: Could not read the file ~/.config/ml4w/settings/networkmanager.sh")
+
 
     def on_update_dotfiles(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m" "update"])
@@ -346,6 +360,9 @@ class MyApp(Adw.Application):
     def on_wallpaper(self, widget, _):
         subprocess.Popen(["waypaper"])
 
+    def on_wallpapereffects(self, widget, _):
+        subprocess.Popen(["bash", self.homeFolder + "/.config/hypr/scripts/wallpaper-effects.sh"])
+
     def on_wallpaper_folder(self, widget, _):
         subprocess.Popen([self.filemanager, self.homeFolder + "/wallpaper/"])
 
@@ -353,7 +370,7 @@ class MyApp(Adw.Application):
         subprocess.Popen(["bash", self.homeFolder + "/.config/waybar/themeswitcher.sh"])
 
     def on_network(self, widget, _):
-        subprocess.Popen(["nm-connection-editor"])
+        subprocess.Popen([self.networkmanager])
 
     def on_bluetooth(self, widget, _):
         subprocess.Popen(["blueman-manager"])
