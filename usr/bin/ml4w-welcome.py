@@ -328,7 +328,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/enable.sh"])
 
     def on_nmapplet_start(self, widget, _):
-        subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh"])
+        subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh","toggle"])
 
     def on_nmapplet_stop(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh","stop"])

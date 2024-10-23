@@ -386,12 +386,8 @@
               <attribute name="action">app.printers</attribute>
             </item>
             <item>
-              <attribute name="label">Start nm-applet</attribute>
+              <attribute name="label">Toggle nm-applet</attribute>
               <attribute name="action">app.nm-applet-start</attribute>
-            </item>
-            <item>
-              <attribute name="label">Stop nm-applet</attribute>
-              <attribute name="action">app.nm-applet-stop</attribute>
             </item>
           </section>
           <section>
