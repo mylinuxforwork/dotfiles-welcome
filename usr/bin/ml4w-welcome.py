@@ -94,8 +94,6 @@ class MyApp(Adw.Application):
         self.create_action('shell', self.on_shell)
         self.create_action('thunarterminal', self.on_system_thunarterminal)
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
-        self.create_action('sddm_enable', self.on_sddm_enable)
-        self.create_action('sddm_disable', self.on_sddm_disable)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
         self.create_action('printers', self.on_printers)
@@ -319,13 +317,7 @@ class MyApp(Adw.Application):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/cleanup.sh"])
 
     def on_sddm_wallpaper(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/wallpaper.sh"])
-
-    def on_sddm_disable(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/disable.sh"])
-
-    def on_sddm_enable(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/sddm/scripts/enable.sh"])
+        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/sddm-wallpaper.sh"])
 
     def on_nmapplet_start(self, widget, _):
         subprocess.Popen(["bash", self.homeFolder + "/.config/ml4w/scripts/nm-applet.sh","toggle"])
