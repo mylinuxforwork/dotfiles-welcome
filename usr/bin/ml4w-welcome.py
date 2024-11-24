@@ -66,8 +66,6 @@ class MyApp(Adw.Application):
         
         self.create_action('quit', lambda *_: self.quit(), ['<primary>q'])
         self.create_action('update', self.on_system_update)
-        self.create_action('pacman', self.on_pacman)
-        self.create_action('cleanup', self.on_system_cleanup)
         self.create_action('about', self.on_about)
         self.create_action('settings', self.on_settings)
         self.create_action('hyprlandsettings', self.on_hyprlandsettings)
@@ -89,14 +87,11 @@ class MyApp(Adw.Application):
         self.create_action('hyprlandhomepage', self.on_hyprlandhomepage)
         self.create_action('hyprlandwiki', self.on_hyprlandwiki)
         self.create_action('systeminfo', self.on_system_info)
-        self.create_action('unlock', self.on_system_unlock)
-        self.create_action('timeshift', self.on_system_timeshift)
         self.create_action('shell', self.on_shell)
         self.create_action('thunarterminal', self.on_system_thunarterminal)
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
-        self.create_action('printers', self.on_printers)
         self.create_action('execute_postinstallation', self.on_execute_postinstallation)
         self.create_action('activate_dotfiles', self.on_activate_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
@@ -249,7 +244,7 @@ class MyApp(Adw.Application):
             application_icon="application-x-executable",
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.6.5",
+            version="2.9.7.0",
             website="https://github.com/mylinuxforwork/dotfiles",
             issue_url="https://github.com/mylinuxforwork/dotfiles/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles/issues",
@@ -292,29 +287,14 @@ class MyApp(Adw.Application):
     def on_system_update(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installupdates.sh"])
 
-    def on_printers(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installprinters.sh"])
-
-    def on_pacman(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/pacman.sh"])
-
     def on_uninstall(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m", "uninstall"])
-
-    def on_system_timeshift(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installtimeshift.sh"])
 
     def on_shell(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/shell.sh"])
 
     def on_system_thunarterminal(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/thunarterminal.sh"])
-
-    def on_system_unlock(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/unlock-pacman.sh"])
-
-    def on_system_cleanup(self, widget, _):
-        subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/cleanup.sh"])
 
     def on_sddm_wallpaper(self, widget, _):
         subprocess.Popen([self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/sddm-wallpaper.sh"])

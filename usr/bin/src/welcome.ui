@@ -382,10 +382,6 @@
               <attribute name="action">app.bluetooth</attribute>
             </item>
             <item>
-              <attribute name="label">Install printers</attribute>
-              <attribute name="action">app.printers</attribute>
-            </item>
-            <item>
               <attribute name="label">Toggle nm-applet</attribute>
               <attribute name="action">app.nm-applet-start</attribute>
             </item>
@@ -394,22 +390,6 @@
             <item>
               <attribute name="label">Update your system</attribute>
               <attribute name="action">app.update</attribute>
-            </item>
-            <item>
-              <attribute name="label">Configure pacman.conf</attribute>
-              <attribute name="action">app.pacman</attribute>
-            </item>
-            <item>
-              <attribute name="label">Cleanup your system</attribute>
-              <attribute name="action">app.cleanup</attribute>
-            </item>
-            <item>
-              <attribute name="label">Unlock pacman database</attribute>
-              <attribute name="action">app.unlock</attribute>
-            </item>
-            <item>
-              <attribute name="label">Install Timeshift</attribute>
-              <attribute name="action">app.timeshift</attribute>
             </item>
           </section>
       </submenu>    
