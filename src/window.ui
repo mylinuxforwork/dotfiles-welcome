@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="DotfilesWelcomeWindow" parent="AdwApplicationWindow">
+
+    <property name="title">ML4W Welcome</property>
+    <property name="default-width">700</property>
+    <property name="default-height">600</property>
+
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+
+          <!-- Header -->
+          <object class="AdwHeaderBar">
+
+            <child type="start">
+              <object class="GtkMenuButton">
+                <property name="label">Settings</property>
+                <property name="menu-model">maintenance_menu</property>
+              </object>
+            </child>
+
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="tooltip-text">Main Menu</property>
+                <property name="primary">true</property>
+                <property name="menu-model">window_menu</property>
+              </object>
+            </child>
+
+            <child type="end">
+              <object class="GtkButton" id="btn_toggle">
+                <property name="icon-name">window-minimize-symbolic</property>
+                <property name="name">flat</property>
+                <property name="action-name">app.toggle</property>
+                <property name="tooltip-text">Set to tiling</property>
+              </object>
+            </child>
+
+            <child type="end">
+              <object class="GtkSwitch" id="switch_autostart">
+                <property name="tooltip-text">Toggle Autostart</property>
+                <property name="action-name">app.autostart</property>
+              </object>
+            </child>
+
+          </object>
+          <!-- Header -->
+        </child>
+
+        <property name="content">
+
+          <object class="GtkBox">
+            <property name="orientation">1</property>
+
+            <!-- Update Banner -->
+            <child>
+                <object class="AdwBanner" id="update_banner">
+                    <property name="button-label" translatable="true">Update now</property>
+                    <property name="title">An update for the ML4W Dotfiles is available!</property>
+                    <property name="revealed">false</property>
+                    <property name="action-name">app.update_dotfiles</property>
+                </object>
+            </child>
+            <!-- Update Banner -->
+
+            <child>
+              <object class="GtkBox">
+                <property name="margin-bottom">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-start">5</property>
+                <property name="margin-top">5</property>
+                <property name="valign">3</property>
+                <property name="halign">3</property>
+                <property name="orientation">vertical</property>
+
+                <!-- ML4W Logo -->
+                <child>
+                  <object class="GtkImage" id="ml4w_logo">
+                    <property name="pixel-size">150</property>
+                    <property name="margin-bottom">30</property>
+                  </object>
+                </child>
+                <!-- ML4W Logo -->
+
+                <!-- ML4W Headline -->
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">Welcome to ML4W Dotfiles</property>
+                    <style>
+                      <class name="title-1"/>
+                    </style>
+                  </object>
+                </child>
+                <!-- ML4W Headline -->
+
+                <!-- ML4W Headline -->
+                <child>
+                  <object class="GtkLabel" id="ml4w_version">
+                    <property name="label">Version</property>
+                    <property name="margin-bottom">2</property>
+                  </object>
+                </child>
+                <!-- ML4W Headline -->
+
+                <!-- ML4W Headline -->
+                <child>
+                  <object class="GtkLabel" id="ml4w_folder">
+                    <property name="label">Folder</property>
+                    <property name="margin-bottom">30</property>
+                  </object>
+                </child>
+                <!-- ML4W Headline -->
+
+                <!-- Shortcut Terminal -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;Return</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open the terminal</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <!-- Shortcut Terminal -->
+
+                <!-- Shortcut Browser -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;B</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open the browser</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <!-- Shortcut Browser -->
+
+                <!-- Shortcut Launcher -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;Ctrl&gt;&lt;SUPER&gt;Return</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="true">to open the application launcher</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <!-- Shortcut Launcher -->
+
+                <!-- Shortcut Settings -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="margin-bottom">6</property>
+                    <child>
+                      <object class="GtkShortcutsShortcut">
+                        <property name="accelerator">&lt;SUPER&gt;&lt;Ctrl&gt;S</property>
+                        <property name="margin-start">12</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label">to open Hyprland settings script</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <!-- Shortcut Settings -->
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">0</property>
+                    <property name="halign">3</property>
+                    <property name="spacing">10</property>
+
+
+                    <!-- Shortcut Button -->
+                    <child>
+                      <object class="GtkButton">
+                        <property name="margin-top">20</property>
+                        <property name="hexpand">False</property>
+                        <property name="valign">3</property>
+                        <property name="halign">3</property>
+                        <property name="label">All keybindings</property>
+                        <property name="action-name">app.keybindings</property>
+                      </object>
+                    </child>
+                    <!-- Shortcut Buttons -->
+
+                    <!-- Shortcut Button -->
+                    <child>
+                      <object class="GtkButton">
+                        <property name="margin-top">20</property>
+                        <property name="hexpand">False</property>
+                        <property name="valign">3</property>
+                        <property name="halign">3</property>
+                        <property name="label">Installation Options</property>
+                        <property name="action-name">app.execute_postinstallation</property>
+                      </object>
+                    </child>
+                    <!-- Shortcut Buttons -->
+
+                  </object>
+                </child>
+
+
+              </object>
+            </child>
+          </object>
+
+        </property>
+      </object>
+    </property>
+  </template>
+
+  <!-- Menu Main -->
+  <menu id="window_menu">
+
+    <section>
+      <item>
+        <attribute name="label">ML4W Dotfiles GitHub</attribute>
+        <attribute name="action">app.gitlab</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W Dotfiles Wiki</attribute>
+        <attribute name="action">app.wiki</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W Dotfiles CHANGELOG</attribute>
+        <attribute name="action">app.changelog</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W YouTube Channel</attribute>
+        <attribute name="action">app.youtube</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label">Hyprland Homepage</attribute>
+        <attribute name="action">app.hyprlandhomepage</attribute>
+      </item>
+      <item>
+        <attribute name="label">Hyprland Wiki</attribute>
+        <attribute name="action">app.hyprlandwiki</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label">Update/Reinstall your ML4W Dotfiles</attribute>
+        <attribute name="action">app.update_dotfiles</attribute>
+      </item>
+      <item>
+        <attribute name="label">Activate another ML4W Dotfiles folder</attribute>
+        <attribute name="action">app.activate_dotfiles</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label">System Info</attribute>
+        <attribute name="action">app.systeminfo</attribute>
+      </item>
+      <item>
+        <attribute name="label">Diagnosis</attribute>
+        <attribute name="action">app.diagnosis</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label">Uninstall the ML4W Dotfiles</attribute>
+        <attribute name="action">app.uninstall</attribute>
+      </item>
+    </section>
+
+    <section>
+      <item>
+        <attribute name="label">About</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+      <item>
+        <attribute name="label">Exit</attribute>
+        <attribute name="action">app.quit</attribute>
+      </item>
+    </section>
+
+  </menu>
+  <!-- Menu Main -->
+
+  <!-- Menu Maintenance -->
+  <menu id="maintenance_menu">
+    <section>
+      <item>
+        <attribute name="label">ML4W Dotfiles Settings</attribute>
+        <attribute name="action">app.settings</attribute>
+      </item>
+      <item>
+        <attribute name="label">ML4W Hyprland Settings</attribute>
+        <attribute name="action">app.hyprlandsettings</attribute>
+      </item>
+      <item>
+        <attribute name="label">Installation Options</attribute>
+        <attribute name="action">app.execute_postinstallation</attribute>
+      </item>
+    </section>
+    <section>
+      <submenu>
+        <attribute name="label" translatable="true">Appearance</attribute>
+        <item>
+          <attribute name="label">Change Wallpaper</attribute>
+          <attribute name="action">app.wallpaper</attribute>
+        </item>
+        <item>
+          <attribute name="label">Set Wallpaper for SDDM</attribute>
+          <attribute name="action">app.sddm_wallpaper</attribute>
+        </item>
+        <item>
+          <attribute name="label">Set Wallpaper Effects</attribute>
+          <attribute name="action">app.wallpapereffects</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change Waybar Theme</attribute>
+          <attribute name="action">app.waybartheme</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change GTK Theme</attribute>
+          <attribute name="action">app.gtktheme</attribute>
+        </item>
+        <item>
+          <attribute name="label">Refresh GTK Settings</attribute>
+          <attribute name="action">app.gtkrefresh</attribute>
+        </item>
+        <item>
+          <attribute name="label">Change QT6 Theme</attribute>
+          <attribute name="action">app.qt6theme</attribute>
+        </item>
+      </submenu>
+      <submenu>
+        <attribute name="label" translatable="true">System</attribute>
+          <section>
+            <item>
+              <attribute name="label">Keyboard configuration</attribute>
+              <attribute name="action">app.keyboard</attribute>
+            </item>
+            <item>
+              <attribute name="label">Monitor variations</attribute>
+              <attribute name="action">app.settings</attribute>
+            </item>
+            <item>
+              <attribute name="label">Network settings</attribute>
+              <attribute name="action">app.network</attribute>
+            </item>
+            <item>
+              <attribute name="label">Bluetooth</attribute>
+              <attribute name="action">app.bluetooth</attribute>
+            </item>
+            <item>
+              <attribute name="label">Toggle nm-applet</attribute>
+              <attribute name="action">app.nm-applet-start</attribute>
+            </item>
+          </section>
+          <section>
+            <item>
+              <attribute name="label">Update your system</attribute>
+              <attribute name="action">app.update</attribute>
+            </item>
+          </section>
+      </submenu>
+    </section>
+    <section>
+      <item>
+        <attribute name="label">Exit Hyprland</attribute>
+        <attribute name="action">app.exit_hyprland</attribute>
+      </item>
+    </section>
+  </menu>
+  <!-- Menu Maintenance -->
+
+</interface>

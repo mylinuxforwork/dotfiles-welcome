@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.ml4w.welcome
+Exec=@bindir@/dotfiles-welcome --gapplication-service

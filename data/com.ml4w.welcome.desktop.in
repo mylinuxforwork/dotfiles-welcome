@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=dotfiles-welcome
+Exec=dotfiles-welcome
+Icon=com.ml4w.welcome
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

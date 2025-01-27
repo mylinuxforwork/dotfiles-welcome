@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/com.ml4w.welcome.desktop.in
+data/com.ml4w.welcome.metainfo.xml.in
+data/com.ml4w.welcome.gschema.xml
+src/main.py
+src/window.py
+src/window.ui
