@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=dotfiles-welcome
+Name=ML4W Welcome App
 Exec=dotfiles-welcome
 Icon=com.ml4w.welcome
 Terminal=false

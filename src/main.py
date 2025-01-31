@@ -198,10 +198,10 @@ class DotfilesWelcomeApplication(Adw.Application):
         subprocess.Popen(["flatpak-spawn", "--host", "com.ml4w.hyprland.settings"])
 
     def on_settings(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "com.ml4w.dotfilessettings"])
+        subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.settings"])
 
     def on_system_info(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "--hold", "-e", self.pathname + "/src/scripts/systeminfo.sh"])
+        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/systeminfo.sh"])
 
     def on_diagnosis(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m", "diagnosis"])

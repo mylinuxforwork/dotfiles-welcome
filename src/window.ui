@@ -80,7 +80,7 @@
                 <!-- ML4W Logo -->
                 <child>
                   <object class="GtkImage" id="ml4w_logo">
-                    <property name="pixel-size">150</property>
+                    <property name="pixel-size">120</property>
                     <property name="margin-bottom">30</property>
                   </object>
                 </child>
@@ -114,6 +114,37 @@
                   </object>
                 </child>
                 <!-- ML4W Headline -->
+
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">0</property>
+                    <property name="halign">3</property>
+                    <property name="spacing">0</property>
+                    <property name="margin-bottom">30</property>
+                    <property name="homogeneous">true</property>
+                    <style>
+                      <class name="linked"/>
+                    </style>
+                    <!-- Shortcut Button -->
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label">Dotfiles Settings</property>
+                        <property name="action-name">app.settings</property>
+                      </object>
+                    </child>
+                    <!-- Shortcut Buttons -->
+
+                    <!-- Shortcut Button -->
+                    <child>
+                      <object class="GtkButton">
+                        <property name="label">Hyprland Settings</property>
+                        <property name="action-name">app.hyprlandsettings</property>
+                      </object>
+                    </child>
+                    <!-- Shortcut Buttons -->
+
+                  </object>
+                </child>
 
                 <!-- Shortcut Terminal -->
                 <child>
@@ -172,39 +203,18 @@
                 </child>
                 <!-- Shortcut Launcher -->
 
-                <!-- Shortcut Settings -->
-                <child>
-                  <object class="GtkBox">
-                    <property name="margin-bottom">6</property>
-                    <child>
-                      <object class="GtkShortcutsShortcut">
-                        <property name="accelerator">&lt;SUPER&gt;&lt;Ctrl&gt;S</property>
-                        <property name="margin-start">12</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label">to open Hyprland settings script</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-                <!-- Shortcut Settings -->
-
                 <child>
                   <object class="GtkBox">
                     <property name="orientation">0</property>
-                    <property name="halign">3</property>
-                    <property name="spacing">10</property>
-
-
+                    <property name="margin-bottom">30</property>
+                    <property name="homogeneous">true</property>
+                    <style>
+                      <class name="linked"/>
+                    </style>
                     <!-- Shortcut Button -->
                     <child>
                       <object class="GtkButton">
                         <property name="margin-top">20</property>
-                        <property name="hexpand">False</property>
-                        <property name="valign">3</property>
-                        <property name="halign">3</property>
                         <property name="label">All keybindings</property>
                         <property name="action-name">app.keybindings</property>
                       </object>
@@ -215,9 +225,6 @@
                     <child>
                       <object class="GtkButton">
                         <property name="margin-top">20</property>
-                        <property name="hexpand">False</property>
-                        <property name="valign">3</property>
-                        <property name="halign">3</property>
                         <property name="label">Installation Options</property>
                         <property name="action-name">app.execute_postinstallation</property>
                       </object>
