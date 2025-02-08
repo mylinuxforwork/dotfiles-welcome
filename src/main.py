@@ -42,18 +42,13 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('about', self.on_about_action)
         self.create_action('update', self.on_system_update)
         self.create_action('settings', self.on_settings)
+        self.create_action('sidebar', self.on_sidebar)
         self.create_action('hyprlandsettings', self.on_hyprlandsettings)
         self.create_action('keybindings', self.on_keybindings)
         self.create_action('gitlab', self.on_gitlab)
         self.create_action('youtube', self.on_youtube)
-        self.create_action('wallpaper', self.on_wallpaper)
-        self.create_action('wallpapereffects', self.on_wallpapereffects)
         self.create_action('network', self.on_network)
         self.create_action('bluetooth', self.on_bluetooth)
-        self.create_action('waybartheme', self.on_waybartheme)
-        self.create_action('gtktheme', self.on_gtktheme)
-        self.create_action('qt6theme', self.on_qt6theme)
-        self.create_action('gtkrefresh', self.on_gtkrefresh)
         self.create_action('howtoupdate', self.on_howtoupdate)
         self.create_action('toggle', self.on_toggle)
         self.create_action('autostart', self.on_autostart)
@@ -200,6 +195,9 @@ class DotfilesWelcomeApplication(Adw.Application):
     def on_settings(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.settings"])
 
+    def on_sidebar(self, widget, _):
+        subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.sidebar"])
+
     def on_system_info(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/systeminfo.sh"])
 
@@ -242,29 +240,11 @@ class DotfilesWelcomeApplication(Adw.Application):
     def on_youtube(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
 
-    def on_wallpaper(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "waypaper"])
-
-    def on_wallpapereffects(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/hypr/scripts/wallpaper-effects.sh"])
-
-    def on_waybartheme(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/waybar/themeswitcher.sh"])
-
     def on_network(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.networkmanager])
 
     def on_bluetooth(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "blueman-manager"])
-
-    def on_gtktheme(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "nwg-look"])
-
-    def on_qt6theme(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "qt6ct"])
-
-    def on_gtkrefresh(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/hypr/scripts/gtk.sh"])
 
     def on_exit_hyprland(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/hypr/scripts/power.sh exit"])

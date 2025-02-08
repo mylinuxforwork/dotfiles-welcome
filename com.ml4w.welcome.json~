@@ -36,8 +36,7 @@
             ],
             "config-opts" : [
                 "--libdir=lib"
-            ],
-            "builddir" : true
+            ]
         }
     ],
     "build-options" : {

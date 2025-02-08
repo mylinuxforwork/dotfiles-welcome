@@ -328,6 +328,10 @@
         <attribute name="action">app.settings</attribute>
       </item>
       <item>
+        <attribute name="label">ML4W Dotfiles Sidebar</attribute>
+        <attribute name="action">app.sidebar</attribute>
+      </item>
+      <item>
         <attribute name="label">ML4W Hyprland Settings</attribute>
         <attribute name="action">app.hyprlandsettings</attribute>
       </item>
@@ -337,37 +341,6 @@
       </item>
     </section>
     <section>
-      <submenu>
-        <attribute name="label" translatable="true">Appearance</attribute>
-        <item>
-          <attribute name="label">Change Wallpaper</attribute>
-          <attribute name="action">app.wallpaper</attribute>
-        </item>
-        <item>
-          <attribute name="label">Set Wallpaper for SDDM</attribute>
-          <attribute name="action">app.sddm_wallpaper</attribute>
-        </item>
-        <item>
-          <attribute name="label">Set Wallpaper Effects</attribute>
-          <attribute name="action">app.wallpapereffects</attribute>
-        </item>
-        <item>
-          <attribute name="label">Change Waybar Theme</attribute>
-          <attribute name="action">app.waybartheme</attribute>
-        </item>
-        <item>
-          <attribute name="label">Change GTK Theme</attribute>
-          <attribute name="action">app.gtktheme</attribute>
-        </item>
-        <item>
-          <attribute name="label">Refresh GTK Settings</attribute>
-          <attribute name="action">app.gtkrefresh</attribute>
-        </item>
-        <item>
-          <attribute name="label">Change QT6 Theme</attribute>
-          <attribute name="action">app.qt6theme</attribute>
-        </item>
-      </submenu>
       <submenu>
         <attribute name="label" translatable="true">System</attribute>
           <section>
