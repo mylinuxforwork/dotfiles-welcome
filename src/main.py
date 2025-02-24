@@ -190,7 +190,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         subprocess.Popen(["flatpak-spawn", "--host", self.editor, self.homeFolder + "/.config/hypr/conf/keyboard.conf"])
 
     def on_hyprlandsettings(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "com.ml4w.hyprland.settings"])
+        subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.hyprlandsettings"])
 
     def on_settings(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.settings"])
