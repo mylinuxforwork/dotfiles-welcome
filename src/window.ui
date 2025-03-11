@@ -7,7 +7,7 @@
     <property name="title">ML4W Welcome</property>
     <property name="default-width">700</property>
     <property name="default-height">600</property>
-
+    <property name="resizable">false</property>
     <property name="content">
       <object class="AdwToolbarView">
         <child type="top">
