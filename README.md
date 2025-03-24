@@ -1,6 +1,6 @@
-# ML4W Welcome App
+# ML4W Dotfiles Welcome App
 
-After starting the ML4W dotfiles for the first time, the ML4W Welcome App appears. This app is the starting point to discover the Hyprland setup.
+After starting the ML4W Dotfiles for Hyprland for the first time, the ML4W Welcome App appears. This app is the starting point to discover the Hyprland configuration.
 
 The welcome screen includes the most important keybindings to open a terminal or a browser.
 
@@ -24,6 +24,21 @@ https://github.com/mylinuxforwork/dotfiles
 
 You can find the sourcecode of the ML4W Welcome App in this repository:
 https://github.com/mylinuxforwork/dotfiles-welcome
+
+## Installation
+
+Copy the following command into your terminal.
+
+```
+curl -s https://raw.githubusercontent.com/mylinuxforwork/packages-installer/main/setup.sh | bash -s -- -p flatpak -s https://raw.githubusercontent.com/mylinuxforwork/dotfiles-welcome/master/com.ml4w.welcome.pkginst com.ml4w.welcome
+```
+> The installation is build with ML4W Packages Installer. https://github.com/mylinuxforwork/packages-installer
+
+## Uninstall
+
+```
+flatpak uninstall com.ml4w.welcome
+```
 
 ## GTK Development Resources 
 
