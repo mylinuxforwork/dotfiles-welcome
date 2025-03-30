@@ -261,7 +261,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         about = Adw.AboutDialog(
             application_name="ML4W Welcome App",
             developer_name="Stephan Raabe",
-            version="2.9.8",
+            version="2.9.8.4",
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
