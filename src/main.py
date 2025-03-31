@@ -27,14 +27,6 @@ class DotfilesWelcomeApplication(Adw.Application):
     filemanager = "nautilus"
     networkmanager = "nm-connection-editor"
 
-    # Get ML4W Logo
-    BASE_DIR = pathlib.Path(__file__).resolve().parent
-    CUSTOM_IMAGE = str(
-        BASE_DIR.joinpath(
-            'icon.png',
-        )
-    )
-
     def __init__(self):
         super().__init__(application_id='com.ml4w.welcome',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS)
@@ -82,12 +74,6 @@ class DotfilesWelcomeApplication(Adw.Application):
 
         # Get Window Toggle Button
         self.btn_toggle = win.btn_toggle
-
-        # Get Logo Image
-        self.ml4w_logo = win.ml4w_logo
-
-        # Set ML4W logo
-        self.ml4w_logo.set_from_file(filename=self.CUSTOM_IMAGE)
 
         # Read configuration
         self.readDotfilesVersion(win)
@@ -260,6 +246,7 @@ class DotfilesWelcomeApplication(Adw.Application):
     def on_about_action(self, *args):
         about = Adw.AboutDialog(
             application_name="ML4W Welcome App",
+            application_icon='com.ml4w.welcome',
             developer_name="Stephan Raabe",
             version="2.9.8.4",
             website="https://github.com/mylinuxforwork/dotfiles-welcome",

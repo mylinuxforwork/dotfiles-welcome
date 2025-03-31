@@ -7,7 +7,6 @@ class DotfilesWelcomeWindow(Adw.ApplicationWindow):
 
     ml4w_version = Gtk.Template.Child()
     ml4w_folder = Gtk.Template.Child()
-    ml4w_logo = Gtk.Template.Child()
     update_banner = Gtk.Template.Child()
     btn_toggle = Gtk.Template.Child()
     switch_autostart = Gtk.Template.Child()
