@@ -30,7 +30,7 @@ https://github.com/mylinuxforwork/dotfiles-welcome
 Copy the following command into your terminal.
 
 ```
-curl -s https://raw.githubusercontent.com/mylinuxforwork/packages-installer/main/setup.sh | bash -s -- -p flatpak -s https://raw.githubusercontent.com/mylinuxforwork/dotfiles-welcome/master/com.ml4w.welcome.pkginst com.ml4w.welcome
+bash -c "$(curl -s https://raw.githubusercontent.com/mylinuxforwork/dotfiles-welcome/master/setup.sh)"
 ```
 > The installation is build with ML4W Packages Installer. https://github.com/mylinuxforwork/packages-installer
 
