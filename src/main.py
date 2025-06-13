@@ -248,7 +248,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             application_name="ML4W Welcome App",
             application_icon='com.ml4w.welcome',
             developer_name="Stephan Raabe",
-            version="2.9.8.4",
+            version="2.9.8.6",
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",

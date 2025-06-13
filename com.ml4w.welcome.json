@@ -31,7 +31,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/raabe/Projects"
+                    "url" : "https://github.com/mylinuxforwork/dotfiles-welcome.git"
                 }
             ],
             "config-opts" : [
