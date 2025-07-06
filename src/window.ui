@@ -106,15 +106,6 @@
                 <child>
                   <object class="GtkLabel" id="ml4w_version">
                     <property name="label">Version</property>
-                    <property name="margin-bottom">2</property>
-                  </object>
-                </child>
-                <!-- ML4W Headline -->
-
-                <!-- ML4W Headline -->
-                <child>
-                  <object class="GtkLabel" id="ml4w_folder">
-                    <property name="label">Folder</property>
                     <property name="margin-bottom">30</property>
                   </object>
                 </child>
@@ -220,18 +211,10 @@
                     <child>
                       <object class="GtkButton">
                         <property name="margin-top">20</property>
+                        <property name="margin-start">80</property>
+                        <property name="margin-end">80</property>
                         <property name="label">All keybindings</property>
                         <property name="action-name">app.keybindings</property>
-                      </object>
-                    </child>
-                    <!-- Shortcut Buttons -->
-
-                    <!-- Shortcut Button -->
-                    <child>
-                      <object class="GtkButton">
-                        <property name="margin-top">20</property>
-                        <property name="label">Installation Options</property>
-                        <property name="action-name">app.execute_postinstallation</property>
                       </object>
                     </child>
                     <!-- Shortcut Buttons -->
@@ -254,12 +237,12 @@
 
     <section>
       <item>
-        <attribute name="label">ML4W Dotfiles GitHub</attribute>
-        <attribute name="action">app.gitlab</attribute>
+        <attribute name="label">ML4W Dotfiles Homepage</attribute>
+        <attribute name="action">app.wiki</attribute>
       </item>
       <item>
-        <attribute name="label">ML4W Dotfiles Wiki</attribute>
-        <attribute name="action">app.wiki</attribute>
+        <attribute name="label">ML4W Dotfiles GitHub</attribute>
+        <attribute name="action">app.gitlab</attribute>
       </item>
       <item>
         <attribute name="label">ML4W Dotfiles CHANGELOG</attribute>
@@ -301,13 +284,6 @@
       <item>
         <attribute name="label">Diagnosis</attribute>
         <attribute name="action">app.diagnosis</attribute>
-      </item>
-    </section>
-
-    <section>
-      <item>
-        <attribute name="label">Uninstall the ML4W Dotfiles</attribute>
-        <attribute name="action">app.uninstall</attribute>
       </item>
     </section>
 

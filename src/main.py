@@ -77,7 +77,6 @@ class DotfilesWelcomeApplication(Adw.Application):
 
         # Read configuration
         self.readDotfilesVersion(win)
-        self.readDotfilesFolder(win)
         self.checkForUpdates(win)
         self.getBrowser()
         self.getTerminal()
@@ -150,15 +149,6 @@ class DotfilesWelcomeApplication(Adw.Application):
             print("ERROR: Could not read the file ~/.config/ml4w/version/name")
             win.ml4w_version.set_text("")
 
-    def readDotfilesFolder(self,win):
-        try:
-            with open(self.homeFolder + '/.config/ml4w/settings/dotfiles-folder.sh', 'r') as file:
-                data = file.read().rstrip()
-            win.ml4w_folder.set_text("Installed in folder: ~/" + data)
-        except:
-            print("ERROR: Could not read the file ~/.config/ml4w/settings/dotfiles-folder.sh")
-            win.ml4w_folder.set_text("")
-
     def on_toggle(self, widget, win):
         # Change Label
         if (self.tiling):
@@ -206,25 +196,25 @@ class DotfilesWelcomeApplication(Adw.Application):
         subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/hypr/scripts/keybindings.sh"])
 
     def on_wiki(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://github.com/mylinuxforwork/dotfiles/wiki"])
+        Gtk.UriLauncher(uri="https://mylinuxforwork.github.io/dotfiles/").launch()
 
     def on_changelog(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://github.com/mylinuxforwork/dotfiles/blob/main/CHANGELOG.md"])
+        Gtk.UriLauncher(uri="https://github.com/mylinuxforwork/dotfiles/blob/main/CHANGELOG.md").launch()
 
     def on_hyprlandhomepage(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://hyprland.org/"])
+        Gtk.UriLauncher(uri="https://hyprland.org/").launch()
 
     def on_hyprlandwiki(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://wiki.hyprland.org/"])
+        Gtk.UriLauncher(uri="https://wiki.hyprland.org/").launch()
 
     def on_gitlab(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://github.com/mylinuxforwork/dotfiles"])
+        Gtk.UriLauncher(uri="https://github.com/mylinuxforwork/dotfiles").launch()
 
     def on_howtoupdate(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://github.com/mylinuxforwork/dotfiles/wiki"])
+        Gtk.UriLauncher(uri="https://mylinuxforwork.github.io/dotfiles/getting-started/update/").launch()
 
     def on_youtube(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.browser, "https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw"])
+        Gtk.UriLauncher(uri="https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw").launch()
 
     def on_network(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.networkmanager])
