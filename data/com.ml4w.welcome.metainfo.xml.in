@@ -6,6 +6,9 @@
 
   <name>ML4W Dotfiles Welcome App</name>
   <summary>Welcome app of the ML4W Dotfiles for Hyprland</summary>
+  <description>
+    <p>Welcome app of the ML4W Dotfiles for Hyprland</p>
+  </description>
   <developer id="tld.vendor">
     <name>Stephan Raabe (ML4W)</name>
   </developer>
