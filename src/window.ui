@@ -316,25 +316,21 @@
         <attribute name="label">ML4W Hyprland Settings</attribute>
         <attribute name="action">app.hyprlandsettings</attribute>
       </item>
-      <item>
-        <attribute name="label">Installation Options</attribute>
-        <attribute name="action">app.execute_postinstallation</attribute>
-      </item>
     </section>
     <section>
       <submenu>
         <attribute name="label" translatable="true">System</attribute>
           <section>
             <item>
-              <attribute name="label">Keyboard configuration</attribute>
+              <attribute name="label">Keyboard Configuration</attribute>
               <attribute name="action">app.keyboard</attribute>
             </item>
             <item>
-              <attribute name="label">Monitor variations</attribute>
+              <attribute name="label">Monitor Variations</attribute>
               <attribute name="action">app.settings</attribute>
             </item>
             <item>
-              <attribute name="label">Network settings</attribute>
+              <attribute name="label">Network Settings</attribute>
               <attribute name="action">app.network</attribute>
             </item>
             <item>
@@ -342,13 +338,17 @@
               <attribute name="action">app.bluetooth</attribute>
             </item>
             <item>
-              <attribute name="label">Toggle nm-applet</attribute>
+              <attribute name="label">Toggle Network Manager Applet</attribute>
               <attribute name="action">app.nm-applet-start</attribute>
+            </item>
+            <item>
+              <attribute name="label">Change Shell</attribute>
+              <attribute name="action">app.shell</attribute>
             </item>
           </section>
           <section>
             <item>
-              <attribute name="label">Update your system</attribute>
+              <attribute name="label">Update your System</attribute>
               <attribute name="action">app.update</attribute>
             </item>
           </section>

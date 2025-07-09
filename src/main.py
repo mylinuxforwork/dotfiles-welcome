@@ -50,9 +50,9 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
-        self.create_action('execute_postinstallation', self.on_execute_postinstallation)
         self.create_action('activate_dotfiles', self.on_activate_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
+        self.create_action('shell', self.on_shell)
         self.create_action('changelog', self.on_changelog)
         self.create_action('wiki', self.on_wiki)
         self.create_action('diagnosis', self.on_diagnosis)
@@ -123,9 +123,6 @@ class DotfilesWelcomeApplication(Adw.Application):
     def on_update_dotfiles(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m" "update"])
 
-    def on_execute_postinstallation(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m" "options"])
-
     def on_activate_dotfiles(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles-versions/activate.sh"])
 
@@ -164,6 +161,9 @@ class DotfilesWelcomeApplication(Adw.Application):
 
     def on_keyboard(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.editor, self.homeFolder + "/.config/hypr/conf/keyboard.conf"])
+
+    def on_shell(self, widget, _):
+        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/shell.sh"])
 
     def on_hyprlandsettings(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.hyprlandsettings"])
