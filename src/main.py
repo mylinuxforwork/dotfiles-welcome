@@ -50,12 +50,10 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
-        self.create_action('activate_dotfiles', self.on_activate_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
         self.create_action('shell', self.on_shell)
         self.create_action('changelog', self.on_changelog)
         self.create_action('wiki', self.on_wiki)
-        self.create_action('diagnosis', self.on_diagnosis)
         self.create_action('uninstall', self.on_uninstall)
         self.create_action('nm-applet-start', self.on_nmapplet_start)
 
@@ -121,10 +119,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             print("ERROR: Could not read the file ~/.config/ml4w/settings/networkmanager.sh")
 
     def on_update_dotfiles(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m" "update"])
-
-    def on_activate_dotfiles(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/dotfiles-versions/activate.sh"])
+        subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.dotfilesinstaller"])
 
     def checkForUpdates(self,win):
         try:
@@ -176,9 +171,6 @@ class DotfilesWelcomeApplication(Adw.Application):
 
     def on_system_info(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/systeminfo.sh"])
-
-    def on_diagnosis(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m", "diagnosis"])
 
     def on_system_update(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installupdates.sh"])
@@ -238,7 +230,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             application_name="ML4W Welcome App",
             application_icon='com.ml4w.welcome',
             developer_name="Stephan Raabe",
-            version="2.9.8.6",
+            version="2.9.8.8",
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",

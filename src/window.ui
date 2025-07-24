@@ -267,23 +267,12 @@
 
     <section>
       <item>
-        <attribute name="label">Update/Reinstall your ML4W Dotfiles</attribute>
+        <attribute name="label">Update the ML4W Dotfiles</attribute>
         <attribute name="action">app.update_dotfiles</attribute>
       </item>
       <item>
-        <attribute name="label">Activate another ML4W Dotfiles folder</attribute>
-        <attribute name="action">app.activate_dotfiles</attribute>
-      </item>
-    </section>
-
-    <section>
-      <item>
         <attribute name="label">System Info</attribute>
         <attribute name="action">app.systeminfo</attribute>
-      </item>
-      <item>
-        <attribute name="label">Diagnosis</attribute>
-        <attribute name="action">app.diagnosis</attribute>
       </item>
     </section>
 
