@@ -252,6 +252,10 @@
         <attribute name="label">ML4W YouTube Channel</attribute>
         <attribute name="action">app.youtube</attribute>
       </item>
+      <item>
+        <attribute name="label">Get more Wallpapers</attribute>
+        <attribute name="action">app.wallpapers</attribute>
+      </item>
     </section>
 
     <section>

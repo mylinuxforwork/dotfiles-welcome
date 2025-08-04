@@ -46,6 +46,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('autostart', self.on_autostart)
         self.create_action('hyprlandhomepage', self.on_hyprlandhomepage)
         self.create_action('hyprlandwiki', self.on_hyprlandwiki)
+        self.create_action('wallpapers', self.on_wallpapers)
         self.create_action('systeminfo', self.on_system_info)
         self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
@@ -199,6 +200,9 @@ class DotfilesWelcomeApplication(Adw.Application):
     def on_hyprlandwiki(self, widget, _):
         Gtk.UriLauncher(uri="https://wiki.hyprland.org/").launch()
 
+    def on_wallpapers(self, widget, _):
+        Gtk.UriLauncher(uri="https://github.com/mylinuxforwork/wallpaper").launch()
+
     def on_gitlab(self, widget, _):
         Gtk.UriLauncher(uri="https://github.com/mylinuxforwork/dotfiles").launch()
 
@@ -230,7 +234,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             application_name="ML4W Welcome App",
             application_icon='com.ml4w.welcome',
             developer_name="Stephan Raabe",
-            version="2.9.8.8",
+            version="2.9.9",
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
