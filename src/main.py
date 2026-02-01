@@ -36,6 +36,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('about', self.on_about_action)
         self.create_action('update', self.on_system_update)
         self.create_action('settings', self.on_settings)
+        self.create_action('monitors', self.on_monitors)
         self.create_action('sidebar', self.on_sidebar)
         self.create_action('hyprlandsettings', self.on_hyprlandsettings)
         self.create_action('keybindings', self.on_keybindings)
@@ -173,6 +174,10 @@ class DotfilesWelcomeApplication(Adw.Application):
     def on_settings(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.settings"])
 
+    def on_monitors(self, widget, _):
+        subprocess.Popen(["flatpak-spawn", "--host", "nwg-displays"])
+        self.quit()
+
     def on_sidebar(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.sidebar"])
 
@@ -240,7 +245,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             application_name="ML4W Welcome App",
             application_icon='com.ml4w.welcome',
             developer_name="Stephan Raabe",
-            version="2.10",
+            version=self.app_info["Version"],
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",

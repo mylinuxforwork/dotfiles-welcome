@@ -328,23 +328,25 @@
         <attribute name="label" translatable="true">System</attribute>
           <section>
             <item>
-              <attribute name="label">Keyboard Configuration</attribute>
+              <attribute name="label">Keyboard</attribute>
               <attribute name="action">app.keyboard</attribute>
             </item>
             <item>
-              <attribute name="label">Monitor Variations</attribute>
-              <attribute name="action">app.settings</attribute>
+              <attribute name="label">Monitors</attribute>
+              <attribute name="action">app.monitors</attribute>
             </item>
             <item>
-              <attribute name="label">Network Settings</attribute>
+              <attribute name="label">Network</attribute>
               <attribute name="action">app.network</attribute>
             </item>
             <item>
               <attribute name="label">Bluetooth</attribute>
               <attribute name="action">app.bluetooth</attribute>
             </item>
+          </section>
+          <section>
             <item>
-              <attribute name="label">Toggle Network Manager Applet</attribute>
+              <attribute name="label">Network Manager Applet</attribute>
               <attribute name="action">app.nm-applet-start</attribute>
             </item>
             <item>
