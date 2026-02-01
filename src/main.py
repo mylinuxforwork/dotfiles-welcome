@@ -3,6 +3,7 @@ import gi
 import subprocess
 import os
 import pathlib
+import json
 
 gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
@@ -26,6 +27,7 @@ class DotfilesWelcomeApplication(Adw.Application):
     editor = "gnome-text-editor"
     filemanager = "nautilus"
     networkmanager = "nm-connection-editor"
+    app_info = ""
 
     def __init__(self):
         super().__init__(application_id='com.ml4w.welcome',
@@ -134,13 +136,17 @@ class DotfilesWelcomeApplication(Adw.Application):
             print("ERROR: Could not read the file ~/.config/ml4w/version/update.sh")
 
     def readDotfilesVersion(self,win):
+        self.app_info = json.load(open(self.homeFolder + "/.config/ml4w/version/version.json"))
         try:
-            with open(self.homeFolder + "/.config/ml4w/version/name", 'r') as file:
-                value = file.read()
-            win.ml4w_version.set_text("Version: " + value.strip())
+            self.app_info = json.load(open(self.homeFolder + "/.config/ml4w/version/version.json"))
+            win.ml4w_version.set_text("Version: " + self.app_info["Version"])
+            win.ml4w_title.set_text(self.app_info["Title"])
+            win.ml4w_subtitle.set_text(self.app_info["Subtitle"])
         except:
             print("ERROR: Could not read the file ~/.config/ml4w/version/name")
             win.ml4w_version.set_text("")
+            win.ml4w_title.set_text("ML4W OS")
+            win.ml4w_subtitle.set_text("Dotfiles for Hyprland")
 
     def on_toggle(self, widget, win):
         # Change Label
@@ -234,7 +240,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             application_name="ML4W Welcome App",
             application_icon='com.ml4w.welcome',
             developer_name="Stephan Raabe",
-            version="2.9.9",
+            version="2.10",
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",

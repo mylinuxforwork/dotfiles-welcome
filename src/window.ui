@@ -92,25 +92,37 @@
                 </child>
                 <!-- ML4W Logo -->
 
-                <!-- ML4W Headline -->
+                <!-- ML4W Title -->
                 <child>
-                  <object class="GtkLabel">
-                    <property name="label">Welcome to ML4W Dotfiles</property>
+                  <object class="GtkLabel" id="ml4w_title">
+                    <property name="label">Title</property>
                     <style>
                       <class name="title-1"/>
                     </style>
                   </object>
                 </child>
-                <!-- ML4W Headline -->
+                <!-- ML4W Title -->
 
-                <!-- ML4W Headline -->
+                <!-- ML4W Subtitle -->
+                <child>
+                  <object class="GtkLabel" id="ml4w_subtitle">
+                    <property name="label">Subtitle</property>
+                    <property name="margin-bottom">10</property>
+                    <style>
+                      <class name="title-2"/>
+                    </style>
+                  </object>
+                </child>
+                <!-- ML4W Subtitle -->
+
+                <!-- ML4W Version -->
                 <child>
                   <object class="GtkLabel" id="ml4w_version">
                     <property name="label">Version</property>
                     <property name="margin-bottom">30</property>
                   </object>
                 </child>
-                <!-- ML4W Headline -->
+                <!-- ML4W Version -->
 
                 <child>
                   <object class="GtkBox">
