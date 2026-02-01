@@ -141,7 +141,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         try:
             self.app_info = json.load(open(self.homeFolder + "/.config/ml4w/version/version.json"))
             win.ml4w_version.set_text("Version: " + self.app_info["Version"])
-            win.ml4w_title.set_text(self.app_info["Title"])
+            win.ml4w_title.set_text("Welcome to " + self.app_info["Title"])
             win.ml4w_subtitle.set_text(self.app_info["Subtitle"])
         except:
             print("ERROR: Could not read the file ~/.config/ml4w/version/name")
