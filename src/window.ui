@@ -311,6 +311,24 @@
   <menu id="maintenance_menu">
     <section>
       <item>
+        <attribute name="label">Keyboard</attribute>
+        <attribute name="action">app.keyboard</attribute>
+      </item>
+      <item>
+        <attribute name="label">Monitors</attribute>
+        <attribute name="action">app.monitors</attribute>
+      </item>
+      <item>
+        <attribute name="label">Network</attribute>
+        <attribute name="action">app.network</attribute>
+      </item>
+      <item>
+        <attribute name="label">Bluetooth</attribute>
+        <attribute name="action">app.bluetooth</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label">ML4W Dotfiles Settings</attribute>
         <attribute name="action">app.settings</attribute>
       </item>
@@ -324,43 +342,14 @@
       </item>
     </section>
     <section>
-      <submenu>
-        <attribute name="label" translatable="true">System</attribute>
-          <section>
-            <item>
-              <attribute name="label">Keyboard</attribute>
-              <attribute name="action">app.keyboard</attribute>
-            </item>
-            <item>
-              <attribute name="label">Monitors</attribute>
-              <attribute name="action">app.monitors</attribute>
-            </item>
-            <item>
-              <attribute name="label">Network</attribute>
-              <attribute name="action">app.network</attribute>
-            </item>
-            <item>
-              <attribute name="label">Bluetooth</attribute>
-              <attribute name="action">app.bluetooth</attribute>
-            </item>
-          </section>
-          <section>
-            <item>
-              <attribute name="label">Network Manager Applet</attribute>
-              <attribute name="action">app.nm-applet-start</attribute>
-            </item>
-            <item>
-              <attribute name="label">Change Shell</attribute>
-              <attribute name="action">app.shell</attribute>
-            </item>
-          </section>
-          <section>
-            <item>
-              <attribute name="label">Update your System</attribute>
-              <attribute name="action">app.update</attribute>
-            </item>
-          </section>
-      </submenu>
+      <item>
+        <attribute name="label">Network Manager Applet</attribute>
+        <attribute name="action">app.nm-applet-start</attribute>
+      </item>
+      <item>
+        <attribute name="label">Change Shell</attribute>
+        <attribute name="action">app.shell</attribute>
+      </item>
     </section>
     <section>
       <item>

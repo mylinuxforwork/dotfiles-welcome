@@ -18,6 +18,7 @@ pathname = os.path.dirname(sys.argv[0])
 class DotfilesWelcomeApplication(Adw.Application):
 
     homeFolder = os.path.expanduser('~')
+    config_folder = os.environ.get('XDG_CONFIG_HOME')
     pathname = os.path.dirname(sys.argv[0])
     current_version_name = ""
     current_version_code = ""
@@ -123,28 +124,31 @@ class DotfilesWelcomeApplication(Adw.Application):
             print("ERROR: Could not read the file ~/.config/ml4w/settings/networkmanager.sh")
 
     def on_update_dotfiles(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.dotfilesinstaller"])
+        try:
+            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/get-dotfiles-id.sh"], capture_output=True, text=True)
+            dotfiles_id = result.stdout.strip()
+            subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.dotfilesinstaller", "--install", dotfiles_id])
+        except:
+            print("ERROR: Could not read the file ~/.config/ml4w/scripts/get-dotfiles-id.sh")
 
     def checkForUpdates(self,win):
         try:
-            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/version/update.sh"], capture_output=True, text=True)
+            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/check-dotfiles-update.sh"], capture_output=True, text=True)
             web_version = result.stdout.strip()
-
             if (web_version == '0'):
                 # print("Show update banner")
                 win.update_banner.set_revealed(True)
         except:
-            print("ERROR: Could not read the file ~/.config/ml4w/version/update.sh")
+            print("ERROR: Could not read the file ~/.config/ml4w/scripts/check-dotfiles-update.sh")
 
     def readDotfilesVersion(self,win):
-        self.app_info = json.load(open(self.homeFolder + "/.config/ml4w/version/version.json"))
         try:
-            self.app_info = json.load(open(self.homeFolder + "/.config/ml4w/version/version.json"))
+            self.app_info = json.load(open(self.homeFolder + "/.config/ml4w/version.json"))
             win.ml4w_version.set_text("Version: " + self.app_info["Version"])
             win.ml4w_title.set_text("Welcome to " + self.app_info["Title"])
             win.ml4w_subtitle.set_text(self.app_info["Subtitle"])
         except:
-            print("ERROR: Could not read the file ~/.config/ml4w/version/name")
+            print("ERROR: Could not read the file ~/.config/ml4w/version.json")
             win.ml4w_version.set_text("")
             win.ml4w_title.set_text("ML4W OS")
             win.ml4w_subtitle.set_text("Dotfiles for Hyprland")
@@ -176,7 +180,6 @@ class DotfilesWelcomeApplication(Adw.Application):
 
     def on_monitors(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "nwg-displays"])
-        self.quit()
 
     def on_sidebar(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.sidebar"])
@@ -224,7 +227,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         Gtk.UriLauncher(uri="https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw").launch()
 
     def on_network(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.networkmanager])
+        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/network.sh"])
 
     def on_bluetooth(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "blueman-manager"])
@@ -249,7 +252,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             website="https://github.com/mylinuxforwork/dotfiles-welcome",
             issue_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
             support_url="https://github.com/mylinuxforwork/dotfiles-welcome/issues",
-            copyright="© 2025 Stephan Raabe",
+            copyright="© 2026 Stephan Raabe",
             license_type=Gtk.License.GPL_3_0_ONLY
         )
         about.present(self.props.active_window)
