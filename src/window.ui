@@ -326,6 +326,10 @@
         <attribute name="label">Bluetooth</attribute>
         <attribute name="action">app.bluetooth</attribute>
       </item>
+      <item>
+        <attribute name="label">Display Manager</attribute>
+        <attribute name="action">app.displaymanager</attribute>
+      </item>
     </section>
     <section>
       <item>

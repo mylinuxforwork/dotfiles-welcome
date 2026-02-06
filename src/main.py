@@ -56,6 +56,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
+        self.create_action('displaymanager', self.on_displaymanager)
         self.create_action('shell', self.on_shell)
         self.create_action('changelog', self.on_changelog)
         self.create_action('wiki', self.on_wiki)
@@ -228,6 +229,9 @@ class DotfilesWelcomeApplication(Adw.Application):
 
     def on_network(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/network.sh"])
+
+    def on_displaymanager(self, widget, _):
+        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/ml4w-install-sddm"])
 
     def on_bluetooth(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "blueman-manager"])
