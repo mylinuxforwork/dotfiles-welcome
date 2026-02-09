@@ -52,7 +52,6 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('hyprlandwiki', self.on_hyprlandwiki)
         self.create_action('wallpapers', self.on_wallpapers)
         self.create_action('systeminfo', self.on_system_info)
-        self.create_action('sddm_wallpaper', self.on_sddm_wallpaper)
         self.create_action('exit_hyprland', self.on_exit_hyprland)
         self.create_action('update_dotfiles', self.on_update_dotfiles)
         self.create_action('keyboard', self.on_keyboard)
@@ -60,8 +59,21 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('shell', self.on_shell)
         self.create_action('changelog', self.on_changelog)
         self.create_action('wiki', self.on_wiki)
-        self.create_action('uninstall', self.on_uninstall)
         self.create_action('nm-applet-start', self.on_nmapplet_start)
+
+        # Migrate
+        if (os.path.exists(self.homeFolder + "/.config/ml4w/scripts/ml4w-dotfiles-id")):
+            self.ml4w_dotfiles_id = "ml4w-dotfiles-id"
+            self.ml4w_check_dotfilesupdate = "ml4w-check-dotfiles-update"
+            self.ml4w_change_shell = "ml4w-change-shell"
+            self.ml4w_toggle_nmapplet = "ml4w-toggle-nmapplet"
+            self.ml4w_install_system_updates = "ml4w-install-system-updates"
+        else:
+            self.ml4w_dotfiles_id = "get-dotfiles-id.sh"
+            self.ml4w_check_dotfilesupdate = "check-dotfiles-update.sh"
+            self.ml4w_change_shell = "shell.sh"
+            self.ml4w_toggle_nmapplet = "nm-applet.sh"
+            self.ml4w_install_system_updates = "installupdates.sh"
 
     # Called when the application is activated.
     def do_activate(self):
@@ -126,15 +138,15 @@ class DotfilesWelcomeApplication(Adw.Application):
 
     def on_update_dotfiles(self, widget, _):
         try:
-            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/ml4w-dotfiles-id"], capture_output=True, text=True)
+            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/" + self.ml4w_dotfiles_id], capture_output=True, text=True)
             dotfiles_id = result.stdout.strip()
             subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.dotfilesinstaller", "--install", dotfiles_id])
         except:
-            print("ERROR: Could not read the file ~/.config/ml4w/scripts/ml4w-dotfiles-id")
+            print("ERROR: Could not read the file ~/.config/ml4w/scripts/" + self.ml4w_dotfiles_id)
 
     def checkForUpdates(self,win):
         try:
-            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/ml4w-check-dotfilesupdate"], capture_output=True, text=True)
+            result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/" + self.ml4w_check_dotfilesupdate], capture_output=True, text=True)
             web_version = result.stdout.strip()
             if (web_version == '0'):
                 # print("Show update banner")
@@ -142,7 +154,7 @@ class DotfilesWelcomeApplication(Adw.Application):
             else:
                 print("No update available!")
         except:
-            print("ERROR: Could not read the file ~/.config/ml4w/scripts/ml4w-check-dotfilesupdate")
+            print("ERROR: Could not read the file ~/.config/ml4w/scripts/" + self.ml4w_check_dotfilesupdate)
 
     def readDotfilesVersion(self,win):
         try:
@@ -191,16 +203,10 @@ class DotfilesWelcomeApplication(Adw.Application):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/hypr/scripts/systeminfo.sh"])
 
     def on_system_update(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/installupdates.sh"])
-
-    def on_uninstall(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", "ml4w-hyprland-setup", "-m", "uninstall"])
-
-    def on_sddm_wallpaper(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/sddm-wallpaper.sh"])
+        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/" + self.ml4w_install_system_updates])
 
     def on_nmapplet_start(self, widget, _):
-        subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/ml4w-toggle-nmapplet","toggle"])
+        subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/" + self.ml4w_toggle_nmapplet,"toggle"])
 
     def on_keybindings(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/hypr/scripts/keybindings.sh"])
