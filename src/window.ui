@@ -250,15 +250,15 @@
 
     <section>
       <item>
-        <attribute name="label">ML4W Dotfiles Homepage</attribute>
+        <attribute name="label">ML4W OS Homepage</attribute>
         <attribute name="action">app.wiki</attribute>
       </item>
       <item>
-        <attribute name="label">ML4W Dotfiles GitHub</attribute>
+        <attribute name="label">ML4W OS GitHub</attribute>
         <attribute name="action">app.gitlab</attribute>
       </item>
       <item>
-        <attribute name="label">ML4W Dotfiles CHANGELOG</attribute>
+        <attribute name="label">ML4W OS CHANGELOG</attribute>
         <attribute name="action">app.changelog</attribute>
       </item>
       <item>

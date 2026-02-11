@@ -212,7 +212,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         subprocess.Popen(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/hypr/scripts/keybindings.sh"])
 
     def on_wiki(self, widget, _):
-        Gtk.UriLauncher(uri="https://mylinuxforwork.github.io/dotfiles/").launch()
+        Gtk.UriLauncher(uri="https://ml4w.com/os/").launch()
 
     def on_changelog(self, widget, _):
         Gtk.UriLauncher(uri="https://github.com/mylinuxforwork/dotfiles/blob/main/CHANGELOG.md").launch()
@@ -230,7 +230,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         Gtk.UriLauncher(uri="https://github.com/mylinuxforwork/dotfiles").launch()
 
     def on_howtoupdate(self, widget, _):
-        Gtk.UriLauncher(uri="https://mylinuxforwork.github.io/dotfiles/getting-started/update/").launch()
+        Gtk.UriLauncher(uri="https://ml4w.com/os/getting-started/update/").launch()
 
     def on_youtube(self, widget, _):
         Gtk.UriLauncher(uri="https://www.youtube.com/channel/UC0sUzmZ0CHvVCVrpRfGKZfw").launch()
