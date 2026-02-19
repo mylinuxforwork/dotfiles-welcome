@@ -140,7 +140,24 @@ class DotfilesWelcomeApplication(Adw.Application):
         try:
             result = subprocess.run(["flatpak-spawn", "--host", "bash", self.homeFolder + "/.config/ml4w/scripts/" + self.ml4w_dotfiles_id], capture_output=True, text=True)
             dotfiles_id = result.stdout.strip()
-            subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.dotfilesinstaller", "--install", dotfiles_id])
+            print("Active configuration: " + dotfiles_id)
+            if (dotfiles_id == ""):
+                Gtk.UriLauncher(uri="https://ml4w.com/os/").launch()
+            else:
+                if (dotfiles_id == "com.ml4w.dotfiles"):
+                    setup_script = "https://ml4w.com/os/rolling"
+                else:
+                    setup_script = "https://ml4w.com/os/stable"
+
+                cmd = [
+                    "flatpak-spawn", "--host",
+                    self.terminal,
+                    "--class", "dotfiles-floating",
+                    "sh", "-c",
+                    "bash <(curl -s " + setup_script + "); exec bash"
+                ]
+                subprocess.Popen(cmd)
+
         except:
             print("ERROR: Could not read the file ~/.config/ml4w/scripts/" + self.ml4w_dotfiles_id)
 

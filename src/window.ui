@@ -284,7 +284,7 @@
 
     <section>
       <item>
-        <attribute name="label">Update the ML4W Dotfiles</attribute>
+        <attribute name="label">Update ML4W OS</attribute>
         <attribute name="action">app.update_dotfiles</attribute>
       </item>
       <item>
