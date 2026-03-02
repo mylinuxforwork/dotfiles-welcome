@@ -57,6 +57,7 @@ class DotfilesWelcomeApplication(Adw.Application):
         self.create_action('keyboard', self.on_keyboard)
         self.create_action('displaymanager', self.on_displaymanager)
         self.create_action('shell', self.on_shell)
+        self.create_action('neovim', self.on_neovim)
         self.create_action('changelog', self.on_changelog)
         self.create_action('wiki', self.on_wiki)
         self.create_action('nm-applet-start', self.on_nmapplet_start)
@@ -203,6 +204,9 @@ class DotfilesWelcomeApplication(Adw.Application):
 
     def on_shell(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/ml4w-change-shell"])
+
+    def on_neovim(self, widget, _):
+        subprocess.Popen(["flatpak-spawn", "--host", self.terminal, "--class", "dotfiles-floating", "-e", self.homeFolder + "/.config/ml4w/scripts/ml4w-install-nvim"])
 
     def on_hyprlandsettings(self, widget, _):
         subprocess.Popen(["flatpak-spawn", "--host", "flatpak", "run", "com.ml4w.hyprlandsettings"])

@@ -330,6 +330,17 @@
         <attribute name="label">Display Manager</attribute>
         <attribute name="action">app.displaymanager</attribute>
       </item>
+      <item>
+        <attribute name="label">Options</attribute>
+        <link name="submenu">
+          <section>
+            <item>
+              <attribute name="label">ML4W Neovim Configuration</attribute>
+              <attribute name="action">app.neovim</attribute>
+            </item>
+          </section>
+        </link>
+      </item>
     </section>
     <section>
       <item>
